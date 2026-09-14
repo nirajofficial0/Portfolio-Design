@@ -1,0 +1,178 @@
+/* ==========================================================================
+   10. PAYMENT / SUPPORT / FREELANCE DEPOSIT GATEWAY
+   ========================================================================== */
+.payment-wrapper {
+  background: var(--bg-card);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-cyan);
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.payment-options-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.amount-selector-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.amount-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.amount-btn:hover, .amount-btn.active {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #000;
+}
+
+.custom-amount-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.8rem;
+}
+
+.custom-amount-input-wrap span {
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+
+.custom-amount-input-wrap input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  outline: none;
+}
+
+.upi-apps-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.upi-app-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.upi-app-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+.upi-id-copy-box {
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.upi-id-text {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent-secondary);
+  font-size: 0.95rem;
+}
+
+/* Netbanking Details Accordion */
+.netbanking-details-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bank-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-label {
+  color: var(--text-muted);
+}
+
+.bank-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* QR Code Side */
+.payment-qr-side {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.qr-code-frame {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+
+.qr-img {
+  width: 190px;
+  height: 190px;
+  display: block;
+}
+
+.qr-amount-indicator {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--accent-secondary);
+  font-family: var(--font-mono);
+}

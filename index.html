@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Neeraj-Kumar-Patel | Frontend Developer & UI Designer Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Official Portfolio of Neeraj-Kumar-Patel - Frontend Developer, Web Developer, and UI Designer. BCA student specializing in React.js, JavaScript, SQL Server, and modern web architectures.">
+  <meta name="keywords" content="Neeraj-Kumar-Patel, Neeraj Kumar Patel, Frontend Developer, Web Developer, UI Designer, BCA, Student Management System, React Developer, JavaScript, Portfolio">
+  <meta name="author" content="Neeraj-Kumar-Patel">
+  
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:title" content="Neeraj-Kumar-Patel | Developer & UI Designer Portfolio">
+  <meta property="og:description" content="Explore flagship projects including Student Management System, E-Commerce platforms, UI/UX designs, and ATS-ready resume.">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.jpg" type="image/jpeg">
+  
+  <!-- FontAwesome 6 Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Core Master Stylesheet & Section CSS Modules -->
+  <link rel="stylesheet" href="assets/css/portfolio-pro.css">
+  <link rel="stylesheet" href="assets/css/sections/base.css">
+  <link rel="stylesheet" href="assets/css/sections/preloader.css">
+  <link rel="stylesheet" href="assets/css/sections/header.css">
+  <link rel="stylesheet" href="assets/css/sections/hero.css">
+  <link rel="stylesheet" href="assets/css/sections/about.css">
+  <link rel="stylesheet" href="assets/css/sections/skills.css">
+  <link rel="stylesheet" href="assets/css/sections/projects.css">
+  <link rel="stylesheet" href="assets/css/sections/design.css">
+  <link rel="stylesheet" href="assets/css/sections/education.css">
+  <link rel="stylesheet" href="assets/css/sections/certificates.css">
+  <link rel="stylesheet" href="assets/css/sections/activities.css">
+  <link rel="stylesheet" href="assets/css/sections/payment.css">
+  <link rel="stylesheet" href="assets/css/sections/contact.css">
+  <link rel="stylesheet" href="assets/css/sections/footer.css">
+  <link rel="stylesheet" href="assets/css/sections/modals.css">
+  <link rel="stylesheet" href="assets/css/sections/responsive.css">
+  <link rel="stylesheet" href="assets/css/sections/print.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glow Orbs -->
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+  <div class="bg-ambient-orb orb-3"></div>
+
+  <!-- ==========================================================================
+       SECTION MODULES INJECTION / ORCHESTRATION
+       ========================================================================== -->
+
+  <!-- Preloader Section -->
+  <div id="preloader-section-container">
+    <!-- sections/preloader.html -->
+    <div id="sitePreloader" class="site-preloader">
+      <div class="preloader-backdrop-glow"></div>
+      <div class="preloader-content">
+        <div class="preloader-brand-visual">
+          <div class="preloader-orbit-ring ring-outer"></div>
+          <div class="preloader-orbit-ring ring-middle"></div>
+          <div class="preloader-logo-core">
+            <span class="preloader-logo-letter">N</span>
+          </div>
+        </div>
+
+        <div class="preloader-brand-meta">
+          <h2 class="preloader-brand-title">NEERAJ-KUMAR-PATEL<span class="text-gradient">.DEV</span></h2>
+          <p class="preloader-brand-sub" id="preloaderStatusText">Initializing Developer Portfolio...</p>
+        </div>
+
+        <div class="preloader-progress-wrap">
+          <div class="preloader-progress-track">
+            <div class="preloader-progress-bar" id="preloaderProgressBar">
+              <div class="preloader-progress-glow"></div>
+            </div>
+          </div>
+          <div class="preloader-counter-row">
+            <span class="preloader-tech-badge"><i class="fa-solid fa-bolt"></i> Placement Pro 2026</span>
+            <span class="preloader-counter-num" id="preloaderPercent">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Mobile Drawer Section -->
+  <div id="header-section-container">
+    <!-- sections/header.html -->
+    <header class="site-header">
+      <div class="container nav-container">
+        <a href="#home" class="brand-logo">
+          <div class="logo-badge">N</div>
+          <span>NEERAJ <span class="brand-dot"> </span> </span>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#design" class="nav-link">UI/UX Showcase</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#certificates" class="nav-link">Certificates</a></li>
+          <li><a href="#activities" class="nav-link">Activities</a></li>
+          <li><a href="#payment" class="nav-link"><i class="fa-solid fa-qrcode" style="color:var(--accent-secondary);"></i> Support Pay</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="btn btn-primary btn-sm" onclick="openResumeModal()">
+            <i class="fa-solid fa-file-pdf"></i> ATS Resume
+          </button>
+
+          <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="#about" class="mobile-nav-link"><i class="fa-solid fa-user"></i> About</a></li>
+        <li><a href="#skills" class="mobile-nav-link"><i class="fa-solid fa-code"></i> Skills</a></li>
+        <li><a href="#projects" class="mobile-nav-link"><i class="fa-solid fa-rocket"></i> Projects</a></li>
+        <li><a href="#design" class="mobile-nav-link"><i class="fa-solid fa-palette"></i> UI/UX Showcase</a></li>
+        <li><a href="#education" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+        <li><a href="#certificates" class="mobile-nav-link"><i class="fa-solid fa-certificate"></i> Certifications</a></li>
+        <li><a href="#activities" class="mobile-nav-link"><i class="fa-solid fa-people-group"></i> Activities</a></li>
+        <li><a href="#payment" class="mobile-nav-link"><i class="fa-solid fa-qrcode"></i> Support / Pay</a></li>
+        <li><a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
+      </ul>
+      <div style="margin-top: auto; display:flex; flex-direction:column; gap:0.8rem;">
+        <button class="btn btn-primary" onclick="openResumeModal()" style="width:100%;">
+          <i class="fa-solid fa-file-pdf"></i> View & Print Resume
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Body Content Containers -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <div id="hero-section-container">
+      <!-- sections/hero.html -->
+      <section id="home" class="hero-section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="hero-badge-container">
+                <span class="status-badge">
+                  <span class="status-pulse"></span> Available for Web Dev Roles & Internships
+                </span>
+                <span class="section-tag" style="margin-bottom:0;"><i class="fa-solid fa-location-dot"></i> Lucknow, UP, India</span>
+              </div>
+
+              <div class="hero-greeting">Hi, I'm</div>
+              <h1 class="hero-title">NEERAJ KUMAR PATEL</h1>
+              
+              <div class="hero-role-wrapper">
+                <span>I build </span>
+                <span id="typewriterText"></span>
+                <span class="typewriter-cursor">|</span>
+              </div>
+
+              <p class="hero-bio">
+                Passionate BCA Student (2024–2027) & Frontend Developer crafting scalable web applications, pixel-perfect user interfaces, and robust database systems using React.js, JavaScript (ES6+), and SQL Server.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                  <i class="fa-solid fa-eye"></i> View My Projects
+                </a>
+                <button class="btn btn-outline" onclick="openResumeModal()">
+                  <i class="fa-solid fa-file-arrow-down"></i> ATS Resume (PDF)
+                </button>
+                <a href="#contact" class="btn btn-secondary-glow">
+                  <i class="fa-solid fa-paper-plane"></i> Hire Me
+                </a>
+              </div>
+
+              <div class="hero-socials">
+                <span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Connect:</span>
+                <a href="mailto:nirajpatel12052003@gmail.com" class="social-pill" title="Email"><i class="fa-solid fa-envelope" style="color:#ea4335;"></i> Gmail</a>
+                <a href="tel:+917348541169" class="social-pill" title="Call/WhatsApp"><i class="fa-solid fa-phone" style="color:var(--accent-secondary);"></i> Call</a>
+                <a href="https://github.com/nirajofficial0" target="_blank" rel="noopener noreferrer" class="social-pill" title="GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/nirajofficial0" target="_blank" rel="noopener noreferrer" class="social-pill" title="LinkedIn"><i class="fa-brands fa-linkedin" style="color:#0a66c2;"></i> LinkedIn</a>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="floating-chip chip-1">
+                <i class="fa-brands fa-react" style="color: #61dafb; font-size:1.2rem;"></i>
+                <span>React.js Specialist</span>
+              </div>
+              <div class="floating-chip chip-2">
+                <i class="fa-solid fa-database" style="color: #f29100; font-size:1.2rem;"></i>
+                <span>SQL Server & DBMS</span>
+              </div>
+              <div class="floating-chip chip-3">
+                <i class="fa-brands fa-figma" style="color: #a259ff; font-size:1.2rem;"></i>
+                <span>Figma UI/UX</span>
+              </div>
+
+              <div class="hero-profile-card">
+                <div class="profile-avatar-wrap">
+                  <div class="avatar-ring"></div>
+                  <img src="assets/img/profile.jpg" alt="Neeraj Kumar Patel" class="profile-avatar">
+                </div>
+
+                <div class="profile-info">
+                  <h3 class="profile-name">Neeraj Kumar Patel</h3>
+                  <p class="profile-tag">BCA Scholar • Full Stack Web Developer</p>
+                </div>
+
+                <div class="hero-stats-grid">
+                  <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Web Projects</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Clean Code</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-number">2027</div>
+                    <div class="stat-label">BCA Batch</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- About Section -->
+    <div id="about-section-container">
+      <!-- sections/about.html -->
+      <section id="about" class="section-padding" style="background: rgba(16, 21, 36, 0.4);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-user-astronaut"></i> Discover My Background</span>
+            <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+            <p class="section-subtitle">Bridging design aesthetics with backend database logic to build meaningful web experiences.</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-text-card">
+              <p class="about-intro-p">
+                I am a dedicated <strong>Bachelor of Computer Applications (BCA)</strong> student (2024–2027) with a deep passion for <strong>Frontend Engineering, Web Development, and Data Analytics</strong>. I specialize in building responsive, modern user interfaces using <strong>HTML5, CSS3, JavaScript (ES6+), and React.js</strong>, paired with structured database management using <strong>SQL Server, MySQL, and Python</strong>.
+              </p>
+              <p class="about-intro-p">
+                My flagship achievement includes building an end-to-end <strong>Student Management System</strong> that handles real-time attendance, course tracking, dynamic filtering, and database CRUD operations smoothly.
+              </p>
+
+              <div class="about-highlights">
+                <div class="highlight-box">
+                  <div class="highlight-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="highlight-title">Modern Web Stack</div>
+                  <div class="highlight-desc">React.js, JavaScript ES6+, HTML5/CSS3, Flexbox/Grid</div>
+                </div>
+                <div class="highlight-box">
+                  <div class="highlight-icon" style="color:var(--accent-primary);"><i class="fa-solid fa-database"></i></div>
+                  <div class="highlight-title">Data Analytics & SQL</div>
+                  <div class="highlight-desc">Microsoft Excel (Pivot/VLOOKUP), Power BI, SQL Server, Python</div>
+                </div>
+                <div class="highlight-box">
+                  <div class="highlight-icon" style="color:var(--accent-tertiary);"><i class="fa-solid fa-palette"></i></div>
+                  <div class="highlight-title">UI/UX Precision</div>
+                  <div class="highlight-desc">Figma prototyping, glassmorphism, responsive design</div>
+                </div>
+                <div class="highlight-box">
+                  <div class="highlight-icon" style="color:var(--accent-success);"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <div class="highlight-title">Continuous Learner</div>
+                  <div class="highlight-desc">BCA 2024-2027 • Relational DBMS & Data Structures</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-bento-grid">
+              <div class="bento-card full-width">
+                <div class="bento-header">
+                  <i class="fa-solid fa-bullseye"></i>
+                  <h4>Career Objective</h4>
+                </div>
+                <p class="bento-p">
+                  To secure an impactful role as a <strong>Frontend Developer / Web Developer</strong> in a forward-thinking tech organization where I can leverage my React, JavaScript, and SQL capabilities to create scalable web solutions while growing alongside seasoned engineers.
+                </p>
+              </div>
+
+              <div class="bento-card">
+                <div class="bento-header">
+                  <i class="fa-solid fa-laptop-code" style="color:var(--accent-secondary);"></i>
+                  <h4>Core Strengths</h4>
+                </div>
+                <p class="bento-p">Problem Solving, Clean Architecture, UI Precision, Responsive Layouts.</p>
+              </div>
+
+              <div class="bento-card">
+                <div class="bento-header">
+                  <i class="fa-solid fa-handshake" style="color:var(--accent-tertiary);"></i>
+                  <h4>Soft Skills</h4>
+                </div>
+                <p class="bento-p">Team Collaboration, Technical Documentation, Adaptability & Ownership.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills-section-container">
+      <!-- sections/skills.html -->
+      <section id="skills" class="section-padding">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-layer-group"></i> My Technical Matrix</span>
+            <h2 class="section-title">Skills & <span class="text-gradient">Technologies</span></h2>
+            <p class="section-subtitle">A comprehensive breakdown of tools, programming languages, and frameworks I use to craft digital products.</p>
+          </div>
+
+          <div class="skills-nav">
+            <button class="skill-tab-btn active" data-skill-cat="all">All Tech Stack</button>
+            <button class="skill-tab-btn" data-skill-cat="frontend">Frontend & Web</button>
+            <button class="skill-tab-btn" data-skill-cat="backend">Database & Backend</button>
+            <button class="skill-tab-btn" data-skill-cat="languages">Programming Languages</button>
+            <button class="skill-tab-btn" data-skill-cat="analytics">Data Analytics</button>
+            <button class="skill-tab-btn" data-skill-cat="tools">Tools & Workflow</button>
+          </div>
+
+          <div class="skills-container" id="skillsContainer">
+            <!-- HTML5 -->
+            <div class="skill-card" data-category="frontend languages">
+              <div class="skill-icon-wrap" style="color:#e34f26;"><i class="fa-brands fa-html5"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">HTML5</div>
+                <span class="skill-level-tag">Advanced • Semantic Web</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+              </div>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="skill-card" data-category="frontend languages">
+              <div class="skill-icon-wrap" style="color:#1572b6;"><i class="fa-brands fa-css3-alt"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">CSS3 / Modern Styling</div>
+                <span class="skill-level-tag">Advanced • Flexbox, Grid, Animations</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%;"></div></div>
+              </div>
+            </div>
+
+            <!-- JavaScript ES6+ -->
+            <div class="skill-card" data-category="frontend languages">
+              <div class="skill-icon-wrap" style="color:#f7df1e;"><i class="fa-brands fa-js"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">JavaScript (ES6+)</div>
+                <span class="skill-level-tag">Proficient • Async/DOM, ES6 Modules</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+              </div>
+            </div>
+
+            <!-- React.js -->
+            <div class="skill-card" data-category="frontend">
+              <div class="skill-icon-wrap" style="color:#61dafb;"><i class="fa-brands fa-react"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">React.js</div>
+                <span class="skill-level-tag">Intermediate • Hooks, Components, State</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 82%;"></div></div>
+              </div>
+            </div>
+
+            <!-- SQL Server -->
+            <div class="skill-card" data-category="backend analytics">
+              <div class="skill-icon-wrap" style="color:#cc292b;"><i class="fa-solid fa-database"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Microsoft SQL Server</div>
+                <span class="skill-level-tag">Proficient • Schemas, Queries, SSMS</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+              </div>
+            </div>
+
+            <!-- MySQL -->
+            <div class="skill-card" data-category="backend">
+              <div class="skill-icon-wrap" style="color:#00758f;"><i class="fa-solid fa-server"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">MySQL</div>
+                <span class="skill-level-tag">Proficient • Relational DBMS</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Python -->
+            <div class="skill-card" data-category="languages analytics">
+              <div class="skill-icon-wrap" style="color:#3776ab;"><i class="fa-brands fa-python"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Python</div>
+                <span class="skill-level-tag">Intermediate • Scripting, Logic</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 78%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Java -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-icon-wrap" style="color:#5382a1;"><i class="fa-brands fa-java"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Java</div>
+                <span class="skill-level-tag">Intermediate • OOP Concepts</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 75%;"></div></div>
+              </div>
+            </div>
+
+            <!-- C / C++ -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-icon-wrap" style="color:#00599c;"><i class="fa-solid fa-code"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">C / C++</div>
+                <span class="skill-level-tag">Foundational • Data Structures</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 72%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Data Analytics & Excel -->
+            <div class="skill-card" data-category="analytics">
+              <div class="skill-icon-wrap" style="color:#1d6f42;"><i class="fa-solid fa-file-excel"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Microsoft Excel</div>
+                <span class="skill-level-tag">Advanced • Pivot Tables, VLOOKUP</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Power BI -->
+            <div class="skill-card" data-category="analytics">
+              <div class="skill-icon-wrap" style="color:#f2c811;"><i class="fa-solid fa-chart-column"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Power BI</div>
+                <span class="skill-level-tag">Intermediate • Dashboards, Reports</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 76%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Figma UI/UX -->
+            <div class="skill-card" data-category="tools">
+              <div class="skill-icon-wrap" style="color:#f24e1e;"><i class="fa-brands fa-figma"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Figma</div>
+                <span class="skill-level-tag">Proficient • UI Prototyping, Wireframes</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Git & GitHub -->
+            <div class="skill-card" data-category="tools">
+              <div class="skill-icon-wrap" style="color:#f05032;"><i class="fa-brands fa-git-alt"></i></div>
+              <div class="skill-details">
+                <div class="skill-name">Git & GitHub</div>
+                <span class="skill-level-tag">Proficient • Version Control</span>
+                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects-section-container">
+      <!-- sections/projects.html -->
+      <section id="projects" class="section-padding" style="background: rgba(16, 21, 36, 0.4);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-rocket"></i> Crown Jewels</span>
+            <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+            <p class="section-subtitle">Real-world applications solving tangible problems with full-stack web architectures and databases.</p>
+          </div>
+
+          <div class="project-filters-bar">
+            <div class="filter-btn-group">
+              <button class="proj-filter-btn active" data-filter="all">All Projects</button>
+              <button class="proj-filter-btn" data-filter="fullstack">Full Stack & DB</button>
+              <button class="proj-filter-btn" data-filter="frontend">Frontend & React</button>
+              <button class="proj-filter-btn" data-filter="uiux">UI/UX & Analytics</button>
+            </div>
+
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="projectSearchInput" placeholder="Search projects by tech/title...">
+            </div>
+          </div>
+
+          <!-- FLAGSHIP PROJECT: Student Management System -->
+          <div class="featured-project-card">
+            <span class="featured-ribbon"><i class="fa-solid fa-star"></i> Flagship Academic Project</span>
+
+            <div class="featured-grid">
+              <div class="featured-content">
+                <div style="display:flex; align-items:center; gap:0.6rem;">
+                  <span class="tech-tag" style="background:rgba(99,102,241,0.15); color:var(--accent-primary);">React / Web</span>
+                  <span class="tech-tag" style="background:rgba(6,182,212,0.15); color:var(--accent-secondary);">SQL Server</span>
+                  <span class="tech-tag" style="background:rgba(16,185,129,0.15); color:var(--accent-success);">Full Stack</span>
+                </div>
+
+                <h3 class="featured-title">Student Management System</h3>
+                
+                <div class="featured-problem">
+                  <strong><i class="fa-solid fa-lightbulb"></i> Problem Solved:</strong> Replaced inefficient paper-based academic records with a centralized digital portal for student profiles, attendance tracking, and grading automation.
+                </div>
+
+                <ul class="featured-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> Role-based Admin & Student Portals</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Real-time Attendance Percentage Tracker</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Automated Exam Grading & Transcript Export</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Normalized Relational Database Schema</li>
+                </ul>
+
+                <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
+                  <button class="btn btn-primary btn-sm" onclick="openProjectModal('sms')">
+                    <i class="fa-solid fa-circle-info"></i> Project Deep Dive
+                  </button>
+                  <a href="https://github.com/nirajofficial0/student-management-system" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                    <i class="fa-brands fa-github"></i> GitHub Code
+                  </a>
+                </div>
+              </div>
+
+              <div class="featured-preview-box">
+                <div class="preview-browser-header">
+                  <span class="browser-dot dot-red"></span>
+                  <span class="browser-dot dot-yellow"></span>
+                  <span class="browser-dot dot-green"></span>
+                  <span class="browser-url-bar">https://student-portal.neeraj-dev.internal</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80" alt="Student Management System Interface" class="featured-img">
+              </div>
+            </div>
+          </div>
+
+          <!-- Standard Projects Grid -->
+          <div class="projects-grid" id="projectsGrid">
+            
+            <!-- Project 2: E-Commerce Store -->
+            <div class="project-card" data-category="frontend">
+              <div class="project-thumbnail-wrap">
+                <span class="project-badge-tag">E-Commerce</span>
+                <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=80" alt="E-Commerce Web App" class="project-thumbnail">
+              </div>
+              <div class="project-body">
+                <h4 class="project-name">NextGen E-Commerce Web Store</h4>
+                <p class="project-desc">Responsive web store built with React and JavaScript featuring dynamic product filtering, cart state management, LocalStorage persistence, and checkout simulation.</p>
+                <div class="project-tags">
+                  <span class="tech-tag">React.js</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">CSS Grid</span>
+                  <span class="tech-tag">LocalStorage</span>
+                </div>
+                <div class="project-footer">
+                  <div class="proj-links">
+                    <a href="https://github.com/nirajofficial0/ecommerce-store-web" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+                  </div>
+                  <button class="btn btn-outline btn-sm" onclick="openProjectModal('ecommerce')">Details</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3: Admin Analytics Dashboard -->
+            <div class="project-card" data-category="uiux frontend">
+              <div class="project-thumbnail-wrap">
+                <span class="project-badge-tag">Analytics UI</span>
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80" alt="Admin Analytics Dashboard" class="project-thumbnail">
+              </div>
+              <div class="project-body">
+                <h4 class="project-name">Enterprise Analytics & Admin Dashboard</h4>
+                <p class="project-desc">Interactive dashboard UI incorporating Chart.js line and bar graphs, user management tables, search filters, and dark/light theme switching.</p>
+                <div class="project-tags">
+                  <span class="tech-tag">JavaScript ES6</span>
+                  <span class="tech-tag">Chart.js</span>
+                  <span class="tech-tag">HTML5 Canvas</span>
+                  <span class="tech-tag">Glassmorphism</span>
+                </div>
+                <div class="project-footer">
+                  <div class="proj-links">
+                    <a href="https://github.com/nirajofficial0/admin-analytics-dashboard" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+                  </div>
+                  <button class="btn btn-outline btn-sm" onclick="openProjectModal('admin-dashboard')">Details</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4: Secure Auth & Access Control -->
+            <div class="project-card" data-category="fullstack">
+              <div class="project-thumbnail-wrap">
+                <span class="project-badge-tag">Security & Auth</span>
+                <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&auto=format&fit=crop&q=80" alt="Secure Authentication System" class="project-thumbnail">
+              </div>
+              <div class="project-body">
+                <h4 class="project-name">Secure Authentication & User Access System</h4>
+                <p class="project-desc">Login and Registration portal with client-side regex password strength meter, OTP code verification simulation, and SQL Server user record storage.</p>
+                <div class="project-tags">
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">SQL Server</span>
+                  <span class="tech-tag">PHP/Node</span>
+                  <span class="tech-tag">Security</span>
+                </div>
+                <div class="project-footer">
+                  <div class="proj-links">
+                    <a href="https://github.com/nirajofficial0/secure-auth-system" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+                  </div>
+                  <button class="btn btn-outline btn-sm" onclick="openProjectModal('auth-system')">Details</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 5: Personal Portfolio v2 -->
+            <div class="project-card" data-category="frontend uiux">
+              <div class="project-thumbnail-wrap">
+                <span class="project-badge-tag">Portfolio</span>
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=80" alt="Placement Portfolio Website" class="project-thumbnail">
+              </div>
+              <div class="project-body">
+                <h4 class="project-name">Placement Portfolio Experience</h4>
+                <p class="project-desc">This state-of-the-art developer portfolio featuring dark/light modes, dynamic UPI payment QR system, ATS printable resume modal, and contact routing.</p>
+                <div class="project-tags">
+                  <span class="tech-tag">Vanilla CSS</span>
+                  <span class="tech-tag">JavaScript ES6</span>
+                  <span class="tech-tag">QR Engine</span>
+                  <span class="tech-tag">ATS Printable</span>
+                </div>
+                <div class="project-footer">
+                  <div class="proj-links">
+                    <a href="https://github.com/nirajofficial0/portfolio-design" target="_blank" rel="noopener noreferrer" class="proj-link-btn" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+                  </div>
+                  <button class="btn btn-outline btn-sm" onclick="openProjectModal('portfolio-v2')">Details</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Design Showcase Section -->
+    <div id="design-section-container">
+      <!-- sections/design.html -->
+      <section id="design" class="section-padding">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-palette"></i> Figma & Design Systems</span>
+            <h2 class="section-title">UI/UX <span class="text-gradient-pink">Showcase</span></h2>
+            <p class="section-subtitle">Visual prototypes and interface designs crafted with Figma before code implementation.</p>
+          </div>
+
+          <div class="ui-design-grid">
+            <div class="ui-design-card" onclick="openUiLightbox('saas-landing')">
+              <div class="ui-img-wrap">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" alt="SaaS AI Platform UI" class="ui-img">
+                <div class="ui-overlay"><div class="ui-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+              </div>
+              <div class="ui-info">
+                <span class="ui-type-badge">Web Application</span>
+                <h4 class="ui-title">SaaS AI Developer Platform</h4>
+                <div class="ui-tool"><i class="fa-brands fa-figma"></i> Figma • Dark Glassmorphism</div>
+              </div>
+            </div>
+
+            <div class="ui-design-card" onclick="openUiLightbox('fintech-app')">
+              <div class="ui-img-wrap">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80" alt="Mobile Banking App UI" class="ui-img">
+                <div class="ui-overlay"><div class="ui-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+              </div>
+              <div class="ui-info">
+                <span class="ui-type-badge">Mobile App</span>
+                <h4 class="ui-title">Neo-Bank Mobile App UI</h4>
+                <div class="ui-tool"><i class="fa-brands fa-figma"></i> Figma • iOS/Android Guidelines</div>
+              </div>
+            </div>
+
+            <div class="ui-design-card" onclick="openUiLightbox('student-portal-ui')">
+              <div class="ui-img-wrap">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80" alt="Academic Dashboard UI" class="ui-img">
+                <div class="ui-overlay"><div class="ui-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+              </div>
+              <div class="ui-info">
+                <span class="ui-type-badge">Dashboard UI</span>
+                <h4 class="ui-title">Student Academic Portal</h4>
+                <div class="ui-tool"><i class="fa-brands fa-figma"></i> Figma • Design Systems</div>
+              </div>
+            </div>
+
+            <div class="ui-design-card" onclick="openUiLightbox('ecommerce-ui')">
+              <div class="ui-img-wrap">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=80" alt="E-Commerce Fashion UI" class="ui-img">
+                <div class="ui-overlay"><div class="ui-zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div></div>
+              </div>
+              <div class="ui-info">
+                <span class="ui-type-badge">E-Commerce UX</span>
+                <h4 class="ui-title">Streetwear Online Store</h4>
+                <div class="ui-tool"><i class="fa-brands fa-figma"></i> Figma • Prototyping</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Education Section -->
+    <div id="education-section-container">
+      <!-- sections/education.html -->
+      <section id="education" class="section-padding" style="background: rgba(16, 21, 36, 0.4);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-graduation-cap"></i> Academic Journey</span>
+            <h2 class="section-title">Education & <span class="text-gradient">Qualifications</span></h2>
+            <p class="section-subtitle">My academic history and foundational education in computer applications.</p>
+          </div>
+
+          <div class="timeline-wrap">
+            <!-- BCA -->
+            <div class="timeline-item active">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <span class="timeline-year-tag">2024 – 2027 (Pursuing)</span>
+                <h3 class="timeline-degree">Bachelor of Computer Applications (BCA)</h3>
+                <div class="timeline-institution"><i class="fa-solid fa-university"></i> University Computer Applications Department • Lucknow</div>
+                <p class="timeline-details">
+                  Specializing in Web Engineering, Object-Oriented Programming (Java/C++), Relational Database Management Systems (SQL Server / MySQL), Software Engineering, and Data Structures.
+                </p>
+              </div>
+            </div>
+
+            <!-- BA -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <span class="timeline-year-tag">2020 – 2023</span>
+                <h3 class="timeline-degree">Bachelor of Arts (BA)</h3>
+                <div class="timeline-institution"><i class="fa-solid fa-university"></i> Graduated University Degree</div>
+                <p class="timeline-details">
+                  Completed undergraduate degree developing strong analytical problem-solving, structured writing, and communication abilities.
+                </p>
+              </div>
+            </div>
+
+            <!-- 12th -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <span class="timeline-year-tag">Completed 2020</span>
+                <h3 class="timeline-degree">Higher Secondary Education (12th Grade)</h3>
+                <div class="timeline-institution"><i class="fa-solid fa-school"></i> State Board Examination</div>
+                <p class="timeline-details">
+                  Completed senior secondary school education with focus on core academics and computer literacy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Certificates Section -->
+    <div id="certificates-section-container">
+      <!-- sections/certificates.html -->
+      <section id="certificates" class="section-padding">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-award"></i> Verified Skills</span>
+            <h2 class="section-title">Certifications & <span class="text-gradient">Badges</span></h2>
+            <p class="section-subtitle">Verified professional courses and technical credentials earned online.</p>
+          </div>
+
+          <div class="certificates-grid">
+            <div class="cert-card">
+              <div class="cert-icon"><i class="fa-brands fa-react"></i></div>
+              <div class="cert-info">
+                <h4 class="cert-title">Full Stack Web Development</h4>
+                <div class="cert-issuer">HTML5, CSS3, Modern JavaScript & React</div>
+                <div class="cert-skills">Issued for building dynamic web applications and responsive UI design.</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon" style="color:var(--accent-secondary); background:rgba(6,182,212,0.12);"><i class="fa-solid fa-database"></i></div>
+              <div class="cert-info">
+                <h4 class="cert-title">SQL Server & Relational DBMS</h4>
+                <div class="cert-issuer">Database Design & Query Mastery</div>
+                <div class="cert-skills">Relational schema design, normalization, JOIN queries, and indexing.</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon" style="color:var(--accent-tertiary); background:rgba(236,72,153,0.12);"><i class="fa-brands fa-js"></i></div>
+              <div class="cert-info">
+                <h4 class="cert-title">Modern JavaScript (ES6+)</h4>
+                <div class="cert-issuer">Advanced JS Logic & Web Architecture</div>
+                <div class="cert-skills">Asynchronous JS, Promises, Fetch API, DOM manipulation, and ES modules.</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <div class="cert-icon" style="color:var(--accent-success); background:rgba(16,185,129,0.12);"><i class="fa-brands fa-figma"></i></div>
+              <div class="cert-info">
+                <h4 class="cert-title">UI/UX Prototyping & Figma</h4>
+                <div class="cert-issuer">Design Systems & Wireframing</div>
+                <div class="cert-skills">Wireframe creation, auto-layout, glassmorphic UI components, and user flows.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fresher Placement Banner -->
+          <div style="margin-top: 3.5rem;">
+            <div class="experience-banner-card">
+              <span class="exp-status-pill"><i class="fa-solid fa-certificate"></i> Ready for Immediate Onboarding</span>
+              <h3 class="exp-heading">Entry-Level / Fresher Developer Seeking Opportunities</h3>
+              <p class="exp-desc">
+                As a passionate BCA student equipped with solid hands-on project experience in React.js, JavaScript, and SQL Server, I am actively seeking <strong>Frontend Developer, Web Developer, or Trainee Engineer</strong> opportunities.
+              </p>
+
+              <div class="exp-cards-row">
+                <div class="exp-mini-card">
+                  <h4><i class="fa-solid fa-bolt" style="color:var(--accent-warning);"></i> Fast Adaptability</h4>
+                  <p>Quickly master company tech stacks, frameworks, and team workflows.</p>
+                </div>
+                <div class="exp-mini-card">
+                  <h4><i class="fa-solid fa-code-merge" style="color:var(--accent-secondary);"></i> Clean Code Focus</h4>
+                  <p>Write maintainable, well-commented, and modular JavaScript & CSS.</p>
+                </div>
+                <div class="exp-mini-card">
+                  <h4><i class="fa-solid fa-clock" style="color:var(--accent-success);"></i> Immediate Availability</h4>
+                  <p>Ready to join for full-time roles, internships, or remote projects.</p>
+                </div>
+              </div>
+
+              <div class="resume-cta-buttons">
+                <button class="btn btn-primary" onclick="openResumeModal()">
+                  <i class="fa-solid fa-file-pdf"></i> View ATS Resume Modal
+                </button>
+                <a href="#contact" class="btn btn-outline">
+                  <i class="fa-solid fa-envelope"></i> Contact Me Directly
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Activities Section -->
+    <div id="activities-section-container">
+      <!-- sections/activities.html -->
+      <section id="activities" class="section-padding" style="background: rgba(16, 21, 36, 0.4);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-people-group"></i> Leadership & Service</span>
+            <h2 class="section-title">Extra-Curricular <span class="text-gradient">Activities</span></h2>
+            <p class="section-subtitle">Active community involvement, National Service Scheme (NSS) leadership, healthcare drives, and departmental achievements.</p>
+          </div>
+
+          <div class="activity-filter-wrap">
+            <button class="activity-filter-btn active" data-activity-filter="all"><i class="fa-solid fa-border-all"></i> All Activities</button>
+            <button class="activity-filter-btn" data-activity-filter="nss"><i class="fa-solid fa-hands-holding-child"></i> NSS & Community Service</button>
+            <button class="activity-filter-btn" data-activity-filter="healthcare"><i class="fa-solid fa-heart-pulse"></i> Healthcare & Blood Donation</button>
+            <button class="activity-filter-btn" data-activity-filter="leadership"><i class="fa-solid fa-trophy"></i> Fest Management & Leadership</button>
+          </div>
+
+          <div class="activity-grid" id="activityGrid">
+            
+            <!-- Card 1: NSS 7-Days Special Camp -->
+            <div class="activity-card" data-category="nss">
+              <div class="activity-card-header">
+                <div class="activity-icon-badge"><i class="fa-solid fa-campground"></i></div>
+                <span class="activity-tag"><i class="fa-solid fa-award"></i> NSS Volunteer</span>
+              </div>
+              <h3 class="activity-title">NSS 7-Days Special Residential Camp</h3>
+              <div class="activity-org"><i class="fa-solid fa-building-columns"></i> National Service Scheme (NSS) • Special Village Camp</div>
+              <ul class="activity-desc-list">
+                <li>Participated in an intensive 7-day residential village camp focused on rural welfare, Swachh Bharat cleanliness drives, and digital literacy.</li>
+                <li>Led team outreach schedules, conducted health hygiene awareness sessions for villagers, and coordinated daily camp activities.</li>
+              </ul>
+              <div class="activity-tags-row">
+                <span class="activity-pill">7-Days Residential Camp</span>
+                <span class="activity-pill">Community Service</span>
+                <span class="activity-pill">Swachh Bharat</span>
+              </div>
+              <div class="activity-card-footer">
+                <button type="button" class="cert-action-btn" data-cert-btn="nss-camp" onclick="openCertModal('nss-camp')" title="View or Attach Certificate">
+                  <i class="fa-solid fa-paperclip"></i> Certificate
+                </button>
+                <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--accent-success);"></i> Certified Volunteer</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Blood Donation Drive -->
+            <div class="activity-card" data-category="healthcare">
+              <div class="activity-card-header">
+                <div class="activity-icon-badge" style="color:#ef4444; background:rgba(239,68,68,0.12); border-color:rgba(239,68,68,0.2);"><i class="fa-solid fa-droplet"></i></div>
+                <span class="activity-tag" style="color:#ef4444; background:rgba(239,68,68,0.12); border-color:rgba(239,68,68,0.25);"><i class="fa-solid fa-heart"></i> Blood Donor</span>
+              </div>
+              <h3 class="activity-title">Blood Donation Camp & Voluntary Donor</h3>
+              <div class="activity-org"><i class="fa-solid fa-hospital"></i> University NSS Unit & Local Red Cross Society</div>
+              <ul class="activity-desc-list">
+                <li>Volunteered in organizing the campus blood donation drive, managing donor registration queues, medical triage flow, and refreshment care.</li>
+                <li><strong>Voluntary Donor:</strong> Donated blood voluntarily to support emergency hospital blood banks and save lives.</li>
+              </ul>
+              <div class="activity-tags-row">
+                <span class="activity-pill">Blood Donor</span>
+                <span class="activity-pill">Camp Management</span>
+                <span class="activity-pill">Healthcare Service</span>
+              </div>
+              <div class="activity-card-footer">
+                <button type="button" class="cert-action-btn" data-cert-btn="blood-donation" onclick="openCertModal('blood-donation')" title="View or Attach Certificate">
+                  <i class="fa-solid fa-paperclip"></i> Certificate
+                </button>
+                <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--accent-success);"></i> Active Donor</span>
+              </div>
+            </div>
+
+            <!-- Card 3: University Annual Fest -->
+            <div class="activity-card" data-category="leadership">
+              <div class="activity-card-header">
+                <div class="activity-icon-badge" style="color:var(--accent-tertiary); background:rgba(236,72,153,0.12); border-color:rgba(236,72,153,0.2);"><i class="fa-solid fa-bullhorn"></i></div>
+                <span class="activity-tag" style="color:var(--accent-tertiary); background:rgba(236,72,153,0.12); border-color:rgba(236,72,153,0.25);"><i class="fa-solid fa-star"></i> Lead Volunteer</span>
+              </div>
+              <h3 class="activity-title">University Annual Fest — NSS Stall & Management</h3>
+              <div class="activity-org"><i class="fa-solid fa-masks-theater"></i> University Annual Fest Organizing Committee</div>
+              <ul class="activity-desc-list">
+                <li>Managed and coordinated the official NSS awareness stall during the University Annual Cultural Fest.</li>
+                <li>Supervised crowd control, audience entry discipline, stage guest logistics, and information dissemination.</li>
+              </ul>
+              <div class="activity-tags-row">
+                <span class="activity-pill">Annual Fest</span>
+                <span class="activity-pill">Stall Manager</span>
+                <span class="activity-pill">Crowd Control</span>
+              </div>
+              <div class="activity-card-footer">
+                <button type="button" class="cert-action-btn" data-cert-btn="annual-fest" onclick="openCertModal('annual-fest')" title="View or Attach Certificate">
+                  <i class="fa-solid fa-paperclip"></i> Certificate
+                </button>
+                <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--accent-success);"></i> Fest Coordinator</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Payment Gateway Section -->
+    <div id="payment-section-container">
+      <!-- sections/payment.html -->
+      <section id="payment" class="section-padding">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-wallet"></i> Instant Payment & Support</span>
+            <h2 class="section-title">Support / <span class="text-gradient">Freelance Pay</span></h2>
+            <p class="section-subtitle">Support my open-source work or pay for freelance web development milestones seamlessly via dynamic UPI QR code or NetBanking.</p>
+          </div>
+
+          <div class="payment-wrapper">
+            <div class="payment-grid">
+              <div class="payment-options-side">
+                <h3 style="font-size: 1.4rem; font-weight: 700;">1. Choose or Enter Amount</h3>
+                
+                <div class="amount-selector-group">
+                  <button class="amount-btn active" data-amount="1">₹1</button>
+                  <button class="amount-btn" data-amount="50">₹50</button>
+                  <button class="amount-btn" data-amount="100">₹100</button>
+                  <button class="amount-btn" data-amount="500">₹500</button>
+                  <button class="amount-btn" data-amount="1000">₹1000</button>
+                </div>
+
+                <div>
+                  <label class="form-label">Custom Amount (INR):</label>
+                  <div class="custom-amount-input-wrap">
+                    <span>₹</span>
+                    <input type="text" id="customAmountInput" value="100" placeholder="Enter custom amount">
+                  </div>
+                </div>
+
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin-top:0.5rem;">2. Pay via Installed UPI App</h3>
+                <div class="upi-apps-row">
+                  <a href="#" id="gpayDeepLink" class="upi-app-btn"><i class="fa-brands fa-google-pay"></i> Google Pay</a>
+                  <a href="#" id="phonepeDeepLink" class="upi-app-btn"><i class="fa-solid fa-mobile-screen"></i> PhonePe</a>
+                  <a href="#" id="paytmDeepLink" class="upi-app-btn"><i class="fa-solid fa-wallet"></i> Paytm / BHIM</a>
+                </div>
+
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin-top:0.5rem;">3. Copy UPI ID</h3>
+                <div class="upi-id-copy-box">
+                  <div>
+                    <div style="font-size:0.75rem; color:var(--text-muted);">UPI ID</div>
+                    <div class="upi-id-text">7348541169@upi</div>
+                  </div>
+                  <button class="btn btn-outline btn-sm" onclick="copyToClipboard('7348541169@upi', 'UPI ID copied: 7348541169@upi')">
+                    <i class="fa-solid fa-copy"></i> Copy
+                  </button>
+                </div>
+
+                <div class="netbanking-details-box">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                    <span style="font-weight:700; color:var(--text-primary);"><i class="fa-solid fa-building-columns"></i> NetBanking / Bank Transfer</span>
+                    <button class="btn btn-outline btn-sm" style="padding:0.2rem 0.6rem; font-size:0.75rem;" onclick="copyToClipboard('Acc: 50100693656834 | IFSC: HDFC0005274 | Bank: HDFC Bank', 'Bank details copied!')">
+                      <i class="fa-solid fa-copy"></i> Copy All
+                    </button>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-label">Bank Name:</span>
+                    <span class="bank-value">HDFC Bank</span>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-label">Account Holder:</span>
+                    <span class="bank-value">Neeraj Kumar Patel</span>
+                  </div>
+                  <div class="bank-row">
+                    <span class="bank-label">IFSC Code:</span>
+                    <span class="bank-value">HDFC0005274</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="payment-qr-side">
+                <h4 style="font-size:1.15rem; font-weight:700;">Scan & Pay with Any UPI App</h4>
+                <div class="qr-amount-indicator" id="qrAmountIndicator">₹100</div>
+                
+                <div class="qr-code-frame">
+                  <img id="upiQrCodeImage" src="assets/img/QR.jpeg" alt="UPI QR Code" class="qr-img">
+                </div>
+
+                <p style="font-size:0.82rem; color:var(--text-muted); text-align:center;">
+                  Works with Google Pay, PhonePe, Paytm, BHIM, Cred, and all bank UPI apps.
+                </p>
+
+                <div style="background:rgba(99,102,241,0.08); padding:0.8rem 1rem; border-radius:8px; border:1px solid var(--border-color); font-size:0.82rem; color:var(--text-secondary); width:100%;">
+                  <i class="fa-solid fa-bell" style="color:var(--accent-secondary);"></i> After payment, please send screenshot to: <a href="mailto:nirajpatel12052003@gmail.com?subject=Payment%20Screenshot%20Confirmation" style="color:var(--accent-secondary); font-weight:700; text-decoration:underline;">nirajpatel12052003@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section-container">
+      <!-- sections/contact.html -->
+      <section id="contact" class="section-padding" style="background: rgba(16, 21, 36, 0.4);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</span>
+            <h2 class="section-title">Contact <span class="text-gradient">Me</span></h2>
+            <p class="section-subtitle">Interested in discussing job opportunities, internships, or freelance web development projects? Let's connect directly!</p>
+          </div>
+
+          <div class="quick-email-banner">
+            <div class="quick-email-banner-content">
+              <div class="quick-email-badge"><i class="fa-solid fa-bolt"></i> Fast Connect</div>
+              <div class="quick-email-banner-text">
+                <h4>Direct Email Launchers</h4>
+                <p>Send an email directly via your preferred email app or web service with one click.</p>
+              </div>
+            </div>
+            <div class="quick-email-actions">
+              <a href="mailto:nirajpatel12052003@gmail.com?subject=Job%20Opportunity%20/%20Web%20Development%20Inquiry%20-%20Neeraj%20Kumar%20Patel&body=Hi%20Neeraj,%0D%0A%0D%0AI%20explored%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you%20regarding..." class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-envelope"></i> Open Mail App
+              </a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nirajpatel12052003@gmail.com&su=Developer%20Role%20/%20Project%20Inquiry" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm quick-gmail-btn">
+                <i class="fa-brands fa-google"></i> Gmail Web
+              </a>
+              <a href="https://outlook.live.com/mail/0/deeplink/compose?to=nirajpatel12052003@gmail.com&subject=Developer%20Role%20/%20Project%20Inquiry" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm quick-outlook-btn">
+                <i class="fa-solid fa-envelope-open"></i> Outlook
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-info-cards">
+              <div class="contact-card email-highlight-card">
+                <div class="contact-card-left">
+                  <div class="contact-icon-box"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="contact-card-text">
+                    <div class="contact-label">Direct Email Address</div>
+                    <a href="mailto:nirajpatel12052003@gmail.com?subject=Job%20Opportunity%20/%20Web%20Development%20Inquiry&body=Hi%20Neeraj,%0D%0A%0D%0AI%20explored%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you%20regarding..." class="contact-value-link" title="Click to send direct email">nirajpatel12052003@gmail.com</a>
+                  </div>
+                </div>
+                <div class="contact-card-actions">
+                  <a href="mailto:nirajpatel12052003@gmail.com?subject=Job%20Opportunity%20/%20Web%20Development%20Inquiry&body=Hi%20Neeraj,%0D%0A%0D%0AI%20explored%20your%20portfolio%20and%20would%20like%20to%20connect%20with%20you%20regarding..." class="btn btn-primary btn-sm contact-action-btn" title="Open Mail App">
+                    <i class="fa-solid fa-paper-plane"></i> <span class="btn-text">Email</span>
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm contact-action-btn" onclick="copyToClipboard('nirajpatel12052003@gmail.com', 'Email copied: nirajpatel12052003@gmail.com')" title="Copy email address">
+                    <i class="fa-solid fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-icon-box" style="color:var(--accent-secondary); background:rgba(6,182,212,0.12);"><i class="fa-solid fa-phone"></i></div>
+                  <div class="contact-card-text">
+                    <div class="contact-label">Phone / WhatsApp</div>
+                    <a href="tel:+917348541169" class="contact-value-link">+91 7348541169</a>
+                  </div>
+                </div>
+                <div class="contact-card-actions">
+                  <a href="tel:+917348541169" class="btn btn-primary btn-sm contact-action-btn" title="Call directly">
+                    <i class="fa-solid fa-phone"></i> <span class="btn-text">Call</span>
+                  </a>
+                  <a href="https://wa.me/917348541169?text=Hi%20Neeraj,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm contact-action-btn whatsapp-action-btn" title="Chat on WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i> <span class="btn-text">WhatsApp</span>
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm contact-action-btn" onclick="copyToClipboard('+917348541169', 'Phone number copied: +91 7348541169')" title="Copy phone number">
+                    <i class="fa-solid fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-icon-box" style="color:#ffffff; background:rgba(255,255,255,0.1);"><i class="fa-brands fa-github"></i></div>
+                  <div class="contact-card-text">
+                    <div class="contact-label">GitHub Repository</div>
+                    <a href="https://github.com/nirajofficial0" target="_blank" rel="noopener noreferrer" class="contact-value-link">github.com/nirajofficial0</a>
+                  </div>
+                </div>
+                <div class="contact-card-actions">
+                  <a href="https://github.com/nirajofficial0" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm contact-action-btn" title="Visit GitHub Profile">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="btn-text">Visit</span>
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm contact-action-btn" onclick="copyToClipboard('https://github.com/nirajofficial0', 'GitHub profile link copied!')" title="Copy GitHub link">
+                    <i class="fa-solid fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-icon-box" style="color:#0a66c2; background:rgba(10,102,194,0.12);"><i class="fa-brands fa-linkedin-in"></i></div>
+                  <div class="contact-card-text">
+                    <div class="contact-label">LinkedIn Profile</div>
+                    <a href="https://linkedin.com/in/nirajofficial0" target="_blank" rel="noopener noreferrer" class="contact-value-link">linkedin.com/in/nirajofficial0</a>
+                  </div>
+                </div>
+                <div class="contact-card-actions">
+                  <a href="https://linkedin.com/in/nirajofficial0" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm contact-action-btn" title="Connect on LinkedIn">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="btn-text">Connect</span>
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm contact-action-btn" onclick="copyToClipboard('https://linkedin.com/in/nirajofficial0', 'LinkedIn profile link copied!')" title="Copy LinkedIn link">
+                    <i class="fa-solid fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-card">
+              <div class="form-header-badge-row">
+                <span class="form-badge"><i class="fa-solid fa-circle-check" style="color:var(--accent-success);"></i> Direct to nirajpatel12052003@gmail.com</span>
+              </div>
+              <h3 class="form-card-title">Send a Direct Message</h3>
+              <p class="form-card-sub">Your message will be delivered straight to Neeraj's Gmail inbox.</p>
+
+              <form id="mainContactForm" action="https://formsubmit.co/nirajpatel12052003@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="New Portfolio Message for Neeraj Kumar Patel">
+                <input type="hidden" name="_autoresponse" value="Thank you for reaching out! Neeraj Kumar Patel has received your message and will get back to you shortly.">
+
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Your Full Name *</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="contactName" name="name" class="form-control" placeholder="e.g. Rahul Sharma / Recruiter" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Your Email Address *</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="contactEmail" name="email" class="form-control" placeholder="e.g. name@company.com" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactSubject">Subject</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-tag input-icon"></i>
+                    <input type="text" id="contactSubject" name="subject" class="form-control" placeholder="e.g. Frontend Developer Role / Project Inquiry">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactMessage">Your Message *</label>
+                  <div class="input-with-icon textarea-icon-wrap">
+                    <i class="fa-solid fa-comment-dots input-icon"></i>
+                    <textarea id="contactMessage" name="message" class="form-control" placeholder="Write your message or project requirements here..." required></textarea>
+                  </div>
+                </div>
+
+                <div class="contact-send-options">
+                  <button type="submit" id="formSubmitBtn" class="btn btn-primary btn-send-main">
+                    <i class="fa-solid fa-paper-plane"></i> Send Direct to Neeraj's Gmail
+                  </button>
+                  
+                  <div class="secondary-send-row">
+                    <button type="button" class="btn btn-outline btn-send-app quick-gmail-btn" onclick="sendViaGmailWeb()" title="Compose and send directly in Gmail Web">
+                      <i class="fa-brands fa-google"></i> Send via Gmail Web
+                    </button>
+                    <button type="button" id="directEmailFormBtn" class="btn btn-outline btn-send-app" onclick="sendDirectMailFromForm()" title="Open your default email client with this message">
+                      <i class="fa-solid fa-envelope-open-text"></i> Open in Email App
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-delivery-guarantee">
+                  <i class="fa-solid fa-shield-check" style="color:var(--accent-success);"></i> 
+                  Delivered directly to: <strong>nirajpatel12052003@gmail.com</strong>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <div id="footer-section-container">
+    <!-- sections/footer.html -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div>
+            <a href="#home" class="brand-logo" style="margin-bottom:0.4rem;">
+              <div class="logo-badge">N</div>
+              <span>NEERAJ-KUMAR-PATEL<span class="brand-dot">.DEV</span></span>
+            </a>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Frontend Developer | Web Developer | UI Designer</p>
+          </div>
+
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="mailto:nirajpatel12052003@gmail.com" class="social-pill"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            <a href="https://github.com/nirajofficial0" target="_blank" rel="noopener noreferrer" class="social-pill"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/in/nirajofficial0" target="_blank" rel="noopener noreferrer" class="social-pill"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <button class="social-pill" onclick="openPaymentModal('100')"><i class="fa-solid fa-qrcode"></i> UPI Pay</button>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Neeraj-Kumar-Patel. All rights reserved. Crafted with precision for placement excellence.</p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to Top" title="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Modals Section -->
+  <div id="modals-section-container">
+    <!-- sections/modals.html -->
+    <div class="modal-overlay" id="projectModal">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeModal('projectModal')" aria-label="Close Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="projectModalContent"></div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="resumeModal">
+      <div class="modal-box" style="max-width: 860px;">
+        <button class="modal-close-btn" onclick="closeModal('resumeModal')" aria-label="Close Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="resume-modal-actions" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <span class="section-tag" style="margin-bottom:0;"><i class="fa-solid fa-check"></i> ATS Formatted Digital Resume</span>
+          <div style="display:flex; gap:0.6rem;">
+            <button class="btn btn-primary btn-sm" onclick="printResume()">
+              <i class="fa-solid fa-print"></i> Print / Save as PDF
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('resumeModal')">
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div class="resume-paper" id="printableResumeArea">
+          <div class="resume-header">
+            <div>
+              <h1 class="resume-name">NEERAJ KUMAR PATEL</h1>
+              <div class="resume-role">Frontend Developer | Web Developer | UI Designer</div>
+            </div>
+            <div class="resume-contact-inline">
+              <span><strong>Email:</strong> <a href="mailto:nirajpatel12052003@gmail.com" style="color:#4338ca; text-decoration:none; font-weight:600;">nirajpatel12052003@gmail.com</a></span>
+              <span><strong>Phone:</strong> <a href="tel:+917348541169" style="color:#4338ca; text-decoration:none; font-weight:600;">+91 7348541169</a></span>
+              <span><strong>GitHub:</strong> <a href="https://github.com/nirajofficial0" target="_blank" rel="noopener noreferrer" style="color:#4338ca; text-decoration:none; font-weight:600;">github.com/nirajofficial0</a></span>
+              <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nirajofficial0" target="_blank" rel="noopener noreferrer" style="color:#4338ca; text-decoration:none; font-weight:600;">linkedin.com/in/nirajofficial0</a></span>
+              <span><strong>Location:</strong> India • Lucknow</span>
+            </div>
+          </div>
+
+          <div class="resume-section-title">Professional Summary</div>
+          <p style="font-size:0.88rem; color:#1e293b; font-weight:450; line-height:1.6; margin-bottom:0.8rem;">
+            Enthusiastic and detail-oriented BCA student with a solid background in Computer Applications and Web Development. Proficient in creating scalable frontend web applications with JavaScript (ES6+), React.js, HTML5, and CSS3, backed by robust database design using SQL Server and MySQL. Strong problem-solving aptitude, pixel-perfect Figma UI translation, and eager to contribute as a Frontend / Web Developer.
+          </p>
+
+          <div class="resume-section-title">Technical Skills</div>
+          <div class="resume-skills-block" style="font-size:0.88rem; color:#1e293b; font-weight:500; line-height:1.65; margin-bottom:0.8rem;">
+            <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Frontend & Web:</strong> HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Web Design, Flexbox/Grid, Glassmorphism, Bootstrap</p>
+            <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Data Analytics:</strong> Microsoft Excel (Pivot Tables, VLOOKUP/XLOOKUP), Power BI (DAX, Dashboards), Python (Pandas, NumPy), SQL & SSMS</p>
+            <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Programming Languages:</strong> Java, Python, C / C++</p>
+            <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Databases:</strong> SQL, Microsoft SQL Server, MySQL, MongoDB</p>
+            <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Tools & Version Control:</strong> Git, GitHub, VS Code, Figma, Android Studio, Postman</p>
+          </div>
+
+          <div class="resume-section-title">Key Projects</div>
+          
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>Student Management System (Flagship Project)</span>
+              <span>React.js, SQL Server, Node/PHP, CSS3</span>
+            </div>
+            <div class="resume-item-sub">Full Stack Academic Management & Attendance Platform</div>
+            <ul class="resume-bullet-list">
+              <li>Engineered an end-to-end academic portal with secure role-based authentication (Admin, Faculty, Student).</li>
+              <li>Implemented dynamic student record CRUD operations with real-time search, filters, and pagination.</li>
+              <li>Designed normalized SQL Server database schema ensuring relational integrity and fast query execution.</li>
+              <li>Built automated examination grading calculation and printable student transcript generation.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>NextGen E-Commerce Web Store</span>
+              <span>React.js, JavaScript, CSS3, LocalStorage</span>
+            </div>
+            <div class="resume-item-sub">Responsive Online Retail Platform with Dynamic Cart</div>
+            <ul class="resume-bullet-list">
+              <li>Developed a reactive product catalog with instant multi-criteria filtering (Category, Price, Rating).</li>
+              <li>Implemented stateful shopping cart with local storage persistence and checkout simulation.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>Enterprise Analytics & Admin Dashboard</span>
+              <span>JavaScript ES6, Chart.js, HTML5 Canvas, CSS</span>
+            </div>
+            <div class="resume-item-sub">Interactive Business Analytics & Monitoring Console</div>
+            <ul class="resume-bullet-list">
+              <li>Integrated interactive Chart.js line and bar graphs displaying real-time metrics and revenue analytics.</li>
+              <li>Implemented user management data tables with multi-column sorting and dark/light mode toggle.</li>
+            </ul>
+          </div>
+
+          <div class="resume-section-title">Education</div>
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>Bachelor of Computer Applications (BCA)</span>
+              <span>2024 – 2027 (Pursuing)</span>
+            </div>
+            <div class="resume-item-sub">Core: Data Structures, Web Development, DBMS, OOP in Java/C++</div>
+          </div>
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>Bachelor of Arts (BA)</span>
+              <span>2020 – 2023</span>
+            </div>
+            <div class="resume-item-sub">Graduated with analytical problem solving and communication foundation</div>
+          </div>
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>Higher Secondary Education (12th Standard)</span>
+              <span>Completed 2020</span>
+            </div>
+          </div>
+
+          <div class="resume-section-title">Certifications</div>
+          <ul class="resume-bullet-list">
+            <li>Full Stack Web Development (HTML5, CSS3, Modern JavaScript)</li>
+            <li>SQL Server & Relational Database Design</li>
+            <li>Modern JavaScript (ES6+) & Web Architecture</li>
+            <li>UI/UX Design Systems & Prototyping (Figma)</li>
+            <li>Git & GitHub Version Control Mastery</li>
+          </ul>
+
+          <div class="resume-section-title">Extra-Curricular Activities & Leadership</div>
+          
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>NSS Volunteer — 7-Days Special Residential Camp</span>
+              <span>
+                Certified Volunteer
+                <button class="resume-cert-btn" data-resume-cert="nss-camp" onclick="openCertModal('nss-camp')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+              </span>
+            </div>
+            <div class="resume-item-sub">National Service Scheme (NSS) • Community Service & Rural Welfare</div>
+            <ul class="resume-bullet-list">
+              <li>Completed an intensive 7-day residential village camp executing Swachh Bharat cleanliness drives and health awareness.</li>
+              <li>Conducted digital literacy sessions and coordinated outreach schedules for rural school children.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>Blood Donation Camp Volunteer & Voluntary Donor</span>
+              <span>
+                Certified Donor
+                <button class="resume-cert-btn" data-resume-cert="blood-donation" onclick="openCertModal('blood-donation')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+              </span>
+            </div>
+            <div class="resume-item-sub">Healthcare Welfare & Camp Logistics</div>
+            <ul class="resume-bullet-list">
+              <li>Volunteered in organizing campus blood donation camps, managing donor registration queues and triage care.</li>
+              <li><strong>Voluntary Donor:</strong> Personally donated blood to contribute directly to emergency hospital blood banks.</li>
+            </ul>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-item-top">
+              <span>University Annual Fest — NSS Stall & Event Management</span>
+              <span>
+                Lead Coordinator
+                <button class="resume-cert-btn" data-resume-cert="annual-fest" onclick="openCertModal('annual-fest')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+              </span>
+            </div>
+            <div class="resume-item-sub">Stall Coordination, Discipline & Crowd Management</div>
+            <ul class="resume-bullet-list">
+              <li>Headed the official NSS awareness stall and coordinated crowd discipline, auditorium entry, and VIP guest hospitality.</li>
+            </ul>
+          </div>
+
+          <div class="resume-section-title">Technical Competitions & Contests</div>
+          <ul class="resume-bullet-list">
+            <li style="margin-bottom:0.4rem;">
+              <strong>College Python Quiz Competition:</strong> Participated in timed algorithmic logic and core Python syntax challenges.
+              <button class="resume-cert-btn" data-resume-cert="quiz-python" onclick="openCertModal('quiz-python')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+            </li>
+            <li style="margin-bottom:0.4rem;">
+              <strong>"Query Quest" SQL Competition:</strong> Participated in inter-college database query challenge solving complex multi-table SQL joins and aggregations.
+              <button class="resume-cert-btn" data-resume-cert="quiz-sql" onclick="openCertModal('quiz-sql')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="certModal">
+      <div class="modal-box cert-modal-box">
+        <button class="modal-close-btn" onclick="closeModal('certModal')" aria-label="Close Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="cert-modal-header">
+          <div>
+            <span class="section-tag" style="margin-bottom: 0.3rem;"><i class="fa-solid fa-award"></i> Verified Document & Preview</span>
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary);" id="certModalTitle">Certificate of Participation</h3>
+            <p style="font-size: 0.82rem; color: var(--text-secondary);" id="certModalAuthority">National Service Scheme & College Authority</p>
+          </div>
+        </div>
+
+        <div class="cert-tabs">
+          <button class="cert-tab-btn active" id="tabBtnPreview">
+            <i class="fa-solid fa-certificate"></i> Official Digital Certificate
+          </button>
+          <button class="cert-tab-btn" id="tabBtnUpload">
+            <i class="fa-solid fa-paperclip"></i> Attach / View Scanned Copy
+          </button>
+        </div>
+
+        <div class="cert-display-pane active" id="certPanePreview">
+          <div class="official-cert-frame" id="officialCertPrintArea">
+            <div class="official-cert-watermark"><i class="fa-solid fa-award"></i></div>
+            
+            <div class="official-cert-header">
+              <div class="official-cert-seal"><i class="fa-solid fa-award"></i></div>
+              <div class="official-cert-title" id="officialCertHeading">Certificate of Participation</div>
+              <div class="official-cert-sub" id="officialCertSub">National Service Scheme (NSS)</div>
+            </div>
+
+            <div class="official-cert-body">
+              <div class="official-cert-presented">This is proudly presented to</div>
+              <div class="official-cert-recipient">NEERAJ KUMAR PATEL</div>
+              <p class="official-cert-desc" id="officialCertDesc">
+                For active participation and distinguished service in this event.
+              </p>
+            </div>
+
+            <div class="official-cert-footer">
+              <div class="official-cert-sig-line">
+                <span class="sig-mark">Dr. R. K. Sharma</span>
+                <span class="sig-title" id="officialCertSig1">NSS Programme Officer</span>
+              </div>
+              <div style="text-align: center;">
+                <span class="cert-serial-tag" id="officialCertSerial">Serial: NSS-CAMP-2025-0842</span>
+                <div style="font-size: 0.72rem; color: #64748b; margin-top: 2px;" id="officialCertDate">Status: Verified Volunteer</div>
+              </div>
+              <div class="official-cert-sig-line">
+                <span class="sig-mark">Prof. A. K. Verma</span>
+                <span class="sig-title" id="officialCertSig2">University Coordinator</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-actions-bar">
+            <button class="btn btn-outline btn-sm" onclick="switchCertTab('upload')">
+              <i class="fa-solid fa-upload"></i> Attach Scanned Copy
+            </button>
+            <div style="display: flex; gap: 0.6rem;">
+              <button class="btn btn-primary btn-sm" onclick="printCertificate()">
+                <i class="fa-solid fa-print"></i> Print / Save Certificate
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="closeModal('certModal')">
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-display-pane" id="certPaneUpload">
+          <div class="cert-upload-box" id="certUploadDropzone">
+            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2.2rem; color: var(--accent-primary); margin-bottom: 0.6rem;"></i>
+            <p id="uploadPromptText" style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.3rem;">
+              <strong>Click to Browse</strong> or Drag & Drop scanned certificate image (PNG, JPG)
+            </p>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">Supports PNG, JPG, JPEG • Persists in Browser Storage</span>
+            <input type="file" id="certFileInput" accept="image/*" style="display:none;">
+          </div>
+
+          <div class="uploaded-cert-preview-wrap" id="uploadedCertWrap">
+            <img id="uploadedCertImg" class="uploaded-cert-preview-img" alt="Attached Certificate Preview">
+          </div>
+
+          <div class="cert-actions-bar">
+            <button class="btn btn-outline btn-sm" style="color: #ef4444; border-color: rgba(239,68,68,0.4);" id="removeCertBtn" onclick="removeAttachedCert()">
+              <i class="fa-solid fa-trash-can"></i> Remove Attached Copy
+            </button>
+            <div style="display: flex; gap: 0.6rem; margin-left: auto;">
+              <button class="btn btn-outline btn-sm" onclick="switchCertTab('preview')">
+                <i class="fa-solid fa-arrow-left"></i> Digital Certificate
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="closeModal('certModal')">
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="uiLightboxModal">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeModal('uiLightboxModal')" aria-label="Close Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="uiLightboxContent"></div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="paymentModal">
+      <div class="modal-box" style="max-width: 620px;">
+        <button class="modal-close-btn" onclick="closeModal('paymentModal')" aria-label="Close Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div style="text-align:center; margin-bottom:1.5rem;">
+          <span class="section-tag" style="margin-bottom:0.5rem;"><i class="fa-solid fa-qrcode"></i> Fast UPI Gateway</span>
+          <h3 style="font-size:1.6rem; font-weight:800;">Support / Freelance Payment</h3>
+          <p style="font-size:0.9rem; color:var(--text-secondary);">Instant UPI payment via any UPI app or Netbanking.</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem;">
+          <div class="qr-code-frame">
+            <img id="upiQrCodeImageModal" src="assets/img/QR.jpeg" alt="UPI QR Code" class="qr-img">
+          </div>
+
+          <div class="upi-id-copy-box" style="width:100%;">
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-muted);">UPI ID</div>
+              <div class="upi-id-text">7348541169@upi</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="copyToClipboard('7348541169@upi', 'UPI ID copied: 7348541169@upi')">
+              <i class="fa-solid fa-copy"></i> Copy UPI ID
+            </button>
+          </div>
+
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; justify-content:center;">
+            <button class="btn btn-outline btn-sm" onclick="setModalPaymentAmount('50')">💸 Pay ₹50</button>
+            <button class="btn btn-primary btn-sm" onclick="setModalPaymentAmount('100')">💼 Pay ₹100</button>
+            <button class="btn btn-secondary-glow btn-sm" onclick="setModalPaymentAmount('500')">⭐ Pay ₹500</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+  </div>
+
+  <!-- Master JavaScript Engine & Section Controllers -->
+  <script src="assets/js/portfolio-pro.js"></script>
+  <script src="assets/js/sections/utils.js"></script>
+  <script src="assets/js/sections/preloader.js"></script>
+  <script src="assets/js/sections/theme.js"></script>
+  <script src="assets/js/sections/typewriter.js"></script>
+  <script src="assets/js/sections/header.js"></script>
+  <script src="assets/js/sections/skills.js"></script>
+  <script src="assets/js/sections/projects.js"></script>
+  <script src="assets/js/sections/resume.js"></script>
+  <script src="assets/js/sections/payment.js"></script>
+  <script src="assets/js/sections/design-lightbox.js"></script>
+  <script src="assets/js/sections/activities.js"></script>
+  <script src="assets/js/sections/certificates.js"></script>
+  <script src="assets/js/sections/contact.js"></script>
+</body>
+</html>

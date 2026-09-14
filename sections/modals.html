@@ -1,0 +1,365 @@
+  <!-- ==========================================================================
+       13. MODALS (Project Details, ATS Resume, Payment, Lightbox)
+       ========================================================================== -->
+
+  <!-- Project Details Modal -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal('projectModal')" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="projectModalContent"></div>
+    </div>
+  </div>
+
+  <!-- ATS Printable Resume Modal -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="modal-box" style="max-width: 860px;">
+      <button class="modal-close-btn" onclick="closeModal('resumeModal')" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="resume-modal-actions" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <span class="section-tag" style="margin-bottom:0;"><i class="fa-solid fa-check"></i> ATS Formatted Digital Resume</span>
+        <div style="display:flex; gap:0.6rem;">
+          <button class="btn btn-primary btn-sm" onclick="printResume()">
+            <i class="fa-solid fa-print"></i> Print / Save as PDF
+          </button>
+          <button class="btn btn-outline btn-sm" onclick="closeModal('resumeModal')">
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Resume Paper Container -->
+      <div class="resume-paper" id="printableResumeArea">
+        <div class="resume-header">
+          <div>
+            <h1 class="resume-name">NEERAJ KUMAR PATEL</h1>
+            <div class="resume-role">Frontend Developer | Web Developer | UI Designer</div>
+          </div>
+          <div class="resume-contact-inline">
+            <span><strong>Email:</strong> <a href="mailto:nirajpatel12052003@gmail.com" style="color:#4338ca; text-decoration:none; font-weight:600;">nirajpatel12052003@gmail.com</a></span>
+			<span><strong>Phone:</strong> <a href="tel:+917348541169" style="color:#4338ca; text-decoration:none; font-weight:600;">+91 7348541169</a></span>
+            <span><strong>GitHub:</strong> <a href="https://github.com/nirajofficial0" target="_blank" rel="noopener noreferrer" style="color:#4338ca; text-decoration:none; font-weight:600;">github.com/nirajofficial0</a></span>
+            <span><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nirajofficial0" target="_blank" rel="noopener noreferrer" style="color:#4338ca; text-decoration:none; font-weight:600;">linkedin.com/in/nirajofficial0</a></span>
+            <span><strong>Location:</strong> India • Lucknow</span>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="resume-section-title">Professional Summary</div>
+        <p style="font-size:0.88rem; color:#1e293b; font-weight:450; line-height:1.6; margin-bottom:0.8rem;">
+          Enthusiastic and detail-oriented BCA student with a solid background in Computer Applications and Web Development. Proficient in creating scalable frontend web applications with JavaScript (ES6+), React.js, HTML5, and CSS3, backed by robust database design using SQL Server and MySQL. Strong problem-solving aptitude, pixel-perfect Figma UI translation, and eager to contribute as a Frontend / Web Developer.
+        </p>
+
+        <!-- Technical Skills -->
+        <div class="resume-section-title">Technical Skills</div>
+        <div class="resume-skills-block" style="font-size:0.88rem; color:#1e293b; font-weight:500; line-height:1.65; margin-bottom:0.8rem;">
+          <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Frontend & Web:</strong> HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Web Design, Flexbox/Grid, Glassmorphism, Bootstrap</p>
+          <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Data Analytics:</strong> Microsoft Excel (Pivot Tables, VLOOKUP/XLOOKUP), Power BI (DAX, Dashboards), Python (Pandas, NumPy), SQL & SSMS</p>
+          <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Programming Languages:</strong> Java, Python, C / C++</p>
+          <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Databases:</strong> SQL, Microsoft SQL Server, MySQL, MongoDB</p>
+          <p style="margin-bottom:0.35rem; color:#1e293b;"><strong style="color:#0f172a; font-weight:700;">Tools & Version Control:</strong> Git, GitHub, VS Code, Figma, Android Studio, Postman</p>
+        </div>
+
+        <!-- Featured Projects -->
+        <div class="resume-section-title">Key Projects</div>
+        
+        <!-- Project 1 -->
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>Student Management System (Flagship Project)</span>
+            <span>React.js, SQL Server, Node/PHP, CSS3</span>
+          </div>
+          <div class="resume-item-sub">Full Stack Academic Management & Attendance Platform</div>
+          <ul class="resume-bullet-list">
+            <li>Engineered an end-to-end academic portal with secure role-based authentication (Admin, Faculty, Student).</li>
+            <li>Implemented dynamic student record CRUD operations with real-time search, filters, and pagination.</li>
+            <li>Designed normalized SQL Server database schema ensuring relational integrity and fast query execution.</li>
+            <li>Built automated examination grading calculation and printable student transcript generation.</li>
+          </ul>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>NextGen E-Commerce Web Store</span>
+            <span>React.js, JavaScript, CSS3, LocalStorage</span>
+          </div>
+          <div class="resume-item-sub">Responsive Online Retail Platform with Dynamic Cart</div>
+          <ul class="resume-bullet-list">
+            <li>Developed a reactive product catalog with instant multi-criteria filtering (Category, Price, Rating).</li>
+            <li>Implemented stateful shopping cart with local storage persistence and checkout simulation.</li>
+          </ul>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>Enterprise Analytics & Admin Dashboard</span>
+            <span>JavaScript ES6, Chart.js, HTML5 Canvas, CSS</span>
+          </div>
+          <div class="resume-item-sub">Interactive Business Analytics & Monitoring Console</div>
+          <ul class="resume-bullet-list">
+            <li>Integrated interactive Chart.js line and bar graphs displaying real-time metrics and revenue analytics.</li>
+            <li>Implemented user management data tables with multi-column sorting and dark/light mode toggle.</li>
+          </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section-title">Education</div>
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>Bachelor of Computer Applications (BCA)</span>
+            <span>2024 – 2027 (Pursuing)</span>
+          </div>
+          <div class="resume-item-sub">Core: Data Structures, Web Development, DBMS, OOP in Java/C++</div>
+        </div>
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>Bachelor of Arts (BA)</span>
+            <span>2020 – 2023</span>
+          </div>
+          <div class="resume-item-sub">Graduated with analytical problem solving and communication foundation</div>
+        </div>
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>Higher Secondary Education (12th Standard)</span>
+            <span>Completed 2020</span>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="resume-section-title">Certifications</div>
+        <ul class="resume-bullet-list">
+          <li>Full Stack Web Development (HTML5, CSS3, Modern JavaScript)</li>
+          <li>SQL Server & Relational Database Design</li>
+          <li>Modern JavaScript (ES6+) & Web Architecture</li>
+          <li>UI/UX Design Systems & Prototyping (Figma)</li>
+          <li>Git & GitHub Version Control Mastery</li>
+        </ul>
+
+        <!-- Extra-Curricular Activities & Leadership -->
+        <div class="resume-section-title">Extra-Curricular Activities & Leadership</div>
+        
+        <!-- NSS Camp -->
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>NSS Volunteer — 7-Days Special Residential Camp</span>
+            <span>
+              Certified Volunteer
+              <button class="resume-cert-btn" data-resume-cert="nss-camp" onclick="openCertModal('nss-camp')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+            </span>
+          </div>
+          <div class="resume-item-sub">National Service Scheme (NSS) • Community Service & Rural Welfare</div>
+          <ul class="resume-bullet-list">
+            <li>Completed an intensive 7-day residential village camp executing Swachh Bharat cleanliness drives and health awareness.</li>
+            <li>Conducted digital literacy sessions and coordinated outreach schedules for rural school children.</li>
+          </ul>
+        </div>
+
+        <!-- Blood Donation -->
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>Blood Donation Camp Volunteer & Voluntary Donor</span>
+            <span>
+              Certified Donor
+              <button class="resume-cert-btn" data-resume-cert="blood-donation" onclick="openCertModal('blood-donation')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+            </span>
+          </div>
+          <div class="resume-item-sub">Healthcare Welfare & Camp Logistics</div>
+          <ul class="resume-bullet-list">
+            <li>Volunteered in organizing campus blood donation camps, managing donor registration queues and triage care.</li>
+            <li><strong>Voluntary Donor:</strong> Personally donated blood to contribute directly to emergency hospital blood banks.</li>
+          </ul>
+        </div>
+
+        <!-- University Fest -->
+        <div class="resume-item">
+          <div class="resume-item-top">
+            <span>University Annual Fest — NSS Stall & Event Management</span>
+            <span>
+              Lead Coordinator
+              <button class="resume-cert-btn" data-resume-cert="annual-fest" onclick="openCertModal('annual-fest')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+            </span>
+          </div>
+          <div class="resume-item-sub">Stall Coordination, Discipline & Crowd Management</div>
+          <ul class="resume-bullet-list">
+            <li>Headed the official NSS awareness stall and coordinated crowd discipline, auditorium entry, and VIP guest hospitality.</li>
+          </ul>
+        </div>
+
+        <!-- Co-Curricular Tech Quizzes -->
+        <div class="resume-section-title">Technical Competitions & Contests</div>
+        <ul class="resume-bullet-list">
+          <li style="margin-bottom:0.4rem;">
+            <strong>College Python Quiz Competition:</strong> Participated in timed algorithmic logic and core Python syntax challenges.
+            <button class="resume-cert-btn" data-resume-cert="quiz-python" onclick="openCertModal('quiz-python')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+          </li>
+          <li style="margin-bottom:0.4rem;">
+            <strong>"Query Quest" SQL Competition:</strong> Participated in inter-college database query challenge solving complex multi-table SQL joins and aggregations.
+            <button class="resume-cert-btn" data-resume-cert="quiz-sql" onclick="openCertModal('quiz-sql')" title="Inspect / Attach Certificate"><i class="fa-solid fa-paperclip"></i> Certificate</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificate Preview & Attachment Modal -->
+  <div class="modal-overlay" id="certModal">
+    <div class="modal-box cert-modal-box">
+      <button class="modal-close-btn" onclick="closeModal('certModal')" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="cert-modal-header">
+        <div>
+          <span class="section-tag" style="margin-bottom: 0.3rem;"><i class="fa-solid fa-award"></i> Verified Document & Preview</span>
+          <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary);" id="certModalTitle">Certificate of Participation</h3>
+          <p style="font-size: 0.82rem; color: var(--text-secondary);" id="certModalAuthority">National Service Scheme & College Authority</p>
+        </div>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="cert-tabs">
+        <button class="cert-tab-btn active" id="tabBtnPreview">
+          <i class="fa-solid fa-certificate"></i> Official Digital Certificate
+        </button>
+        <button class="cert-tab-btn" id="tabBtnUpload">
+          <i class="fa-solid fa-paperclip"></i> Attach / View Scanned Copy
+        </button>
+      </div>
+
+      <!-- Tab 1: Official Digital Certificate Pane -->
+      <div class="cert-display-pane active" id="certPanePreview">
+        <div class="official-cert-frame" id="officialCertPrintArea">
+          <div class="official-cert-watermark"><i class="fa-solid fa-award"></i></div>
+          
+          <div class="official-cert-header">
+            <div class="official-cert-seal"><i class="fa-solid fa-award"></i></div>
+            <div class="official-cert-title" id="officialCertHeading">Certificate of Participation</div>
+            <div class="official-cert-sub" id="officialCertSub">National Service Scheme (NSS)</div>
+          </div>
+
+          <div class="official-cert-body">
+            <div class="official-cert-presented">This is proudly presented to</div>
+            <div class="official-cert-recipient">NEERAJ KUMAR PATEL</div>
+            <p class="official-cert-desc" id="officialCertDesc">
+              For active participation and distinguished service in this event.
+            </p>
+          </div>
+
+          <div class="official-cert-footer">
+            <div class="official-cert-sig-line">
+              <span class="sig-mark">Dr. R. K. Sharma</span>
+              <span class="sig-title" id="officialCertSig1">NSS Programme Officer</span>
+            </div>
+            <div style="text-align: center;">
+              <span class="cert-serial-tag" id="officialCertSerial">Serial: NSS-CAMP-2025-0842</span>
+              <div style="font-size: 0.72rem; color: #64748b; margin-top: 2px;" id="officialCertDate">Status: Verified Volunteer</div>
+            </div>
+            <div class="official-cert-sig-line">
+              <span class="sig-mark">Prof. A. K. Verma</span>
+              <span class="sig-title" id="officialCertSig2">University Coordinator</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-actions-bar">
+          <button class="btn btn-outline btn-sm" onclick="switchCertTab('upload')">
+            <i class="fa-solid fa-upload"></i> Attach Scanned Copy
+          </button>
+          <div style="display: flex; gap: 0.6rem;">
+            <button class="btn btn-primary btn-sm" onclick="printCertificate()">
+              <i class="fa-solid fa-print"></i> Print / Save Certificate
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="closeModal('certModal')">
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Custom Certificate Upload & Attachment Pane -->
+      <div class="cert-display-pane" id="certPaneUpload">
+        <div class="cert-upload-box" id="certUploadDropzone">
+          <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2.2rem; color: var(--accent-primary); margin-bottom: 0.6rem;"></i>
+          <p id="uploadPromptText" style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.3rem;">
+            <strong>Click to Browse</strong> or Drag & Drop scanned certificate image (PNG, JPG)
+          </p>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Supports PNG, JPG, JPEG • Persists in Browser Storage</span>
+          <input type="file" id="certFileInput" accept="image/*" style="display:none;">
+        </div>
+
+        <!-- Attached Image Preview Container -->
+        <div class="uploaded-cert-preview-wrap" id="uploadedCertWrap">
+          <img id="uploadedCertImg" class="uploaded-cert-preview-img" alt="Attached Certificate Preview">
+        </div>
+
+        <div class="cert-actions-bar">
+          <button class="btn btn-outline btn-sm" style="color: #ef4444; border-color: rgba(239,68,68,0.4);" id="removeCertBtn" onclick="removeAttachedCert()">
+            <i class="fa-solid fa-trash-can"></i> Remove Attached Copy
+          </button>
+          <div style="display: flex; gap: 0.6rem; margin-left: auto;">
+            <button class="btn btn-outline btn-sm" onclick="switchCertTab('preview')">
+              <i class="fa-solid fa-arrow-left"></i> Digital Certificate
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="closeModal('certModal')">
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UI Lightbox Modal -->
+  <div class="modal-overlay" id="uiLightboxModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal('uiLightboxModal')" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="uiLightboxContent"></div>
+    </div>
+  </div>
+
+  <!-- Quick Payment Modal (Popup) -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-box" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="closeModal('paymentModal')" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <span class="section-tag" style="margin-bottom:0.5rem;"><i class="fa-solid fa-qrcode"></i> Fast UPI Gateway</span>
+        <h3 style="font-size:1.6rem; font-weight:800;">Support / Freelance Payment</h3>
+        <p style="font-size:0.9rem; color:var(--text-secondary);">Instant UPI payment via any UPI app or Netbanking.</p>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:center; gap:1.2rem;">
+        <div class="qr-code-frame">
+          <img id="upiQrCodeImageModal" src="assets/img/QR.jpeg" alt="UPI QR Code" class="qr-img">
+        </div>
+
+        <div class="upi-id-copy-box" style="width:100%;">
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">UPI ID</div>
+            <div class="upi-id-text">7348541169@upi</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="copyToClipboard('7348541169@upi', 'UPI ID copied: 7348541169@upi')">
+            <i class="fa-solid fa-copy"></i> Copy UPI ID
+          </button>
+        </div>
+
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap; justify-content:center;">
+          <button class="btn btn-outline btn-sm" onclick="setModalPaymentAmount('50')">💸 Pay ₹50</button>
+          <button class="btn btn-primary btn-sm" onclick="setModalPaymentAmount('100')">💼 Pay ₹100</button>
+          <button class="btn btn-secondary-glow btn-sm" onclick="setModalPaymentAmount('500')">⭐ Pay ₹500</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>

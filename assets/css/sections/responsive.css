@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .hero-visual {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .exp-cards-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu, .nav-actions .btn-primary {
+    display: none;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-role-wrapper {
+    font-size: 1.25rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-card.full-width {
+    grid-column: span 1;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-features-list {
+    grid-template-columns: 1fr;
+  }
+  .quick-email-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+  .quick-email-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .quick-email-actions .btn {
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+  .contact-form-actions-row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .quick-email-banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .quick-email-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .quick-email-actions .btn {
+    width: 100%;
+  }
+  .contact-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+  .contact-card-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .contact-card-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+  .contact-form-card {
+    padding: 1.3rem;
+  }
+  .secondary-send-row {
+    flex-direction: column;
+  }
+  .contact-value-link {
+    font-size: 0.88rem;
+  }
+}

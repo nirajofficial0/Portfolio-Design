@@ -1,0 +1,84 @@
+/* ==========================================================================
+   6. EDUCATION & TIMELINE
+   ========================================================================== */
+.timeline-wrap {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 3px solid var(--accent-primary);
+  z-index: 2;
+}
+
+.timeline-item.active .timeline-dot {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 12px var(--accent-secondary);
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition-smooth);
+}
+
+.timeline-card:hover {
+  border-color: var(--border-glow);
+  transform: translateX(4px);
+}
+
+.timeline-year-tag {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.6rem;
+  font-family: var(--font-mono);
+}
+
+.timeline-degree {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-institution {
+  font-size: 0.92rem;
+  color: var(--text-highlight);
+  margin-bottom: 0.6rem;
+}
+
+.timeline-details {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

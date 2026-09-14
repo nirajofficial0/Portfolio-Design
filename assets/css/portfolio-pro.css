@@ -1,0 +1,22 @@
+/* ==========================================================================
+   ULTRA-MODERN DEVELOPER PORTFOLIO - MASTER DESIGN SYSTEM
+   Imports all modular section stylesheets
+   ========================================================================== */
+
+@import url('sections/base.css');
+@import url('sections/preloader.css');
+@import url('sections/header.css');
+@import url('sections/hero.css');
+@import url('sections/about.css');
+@import url('sections/skills.css');
+@import url('sections/projects.css');
+@import url('sections/design.css');
+@import url('sections/education.css');
+@import url('sections/certificates.css');
+@import url('sections/activities.css');
+@import url('sections/payment.css');
+@import url('sections/contact.css');
+@import url('sections/footer.css');
+@import url('sections/modals.css');
+@import url('sections/responsive.css');
+@import url('sections/print.css');

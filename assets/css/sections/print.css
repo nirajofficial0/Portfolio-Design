@@ -1,0 +1,253 @@
+/* Print Styles - ATS 1-Page Resume Optimization */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 12mm 8mm 12mm;
+  }
+
+  *, *::before, *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #1e293b !important;
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide all main page content elements except the modals container */
+  body > *:not(#modals-section-container) {
+    display: none !important;
+  }
+
+  /* Display the modals container cleanly in print flow */
+  #modals-section-container {
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  /* Hide modal overlay backdrops & inactive modals by default in print */
+  #modals-section-container > .modal-overlay {
+    display: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Display Resume Modal when printing resume (default or when printing-resume class active) */
+  body:not(.printing-cert) #modals-section-container > #resumeModal,
+  body.printing-resume #modals-section-container > #resumeModal {
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  /* Display Certificate Modal when printing certificate */
+  body.printing-cert #modals-section-container > #certModal {
+    display: block !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  #resumeModal .modal-box,
+  #certModal .modal-box {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: #ffffff !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  /* Hide interactive UI elements, buttons, action bars, toasts */
+  .modal-close-btn,
+  .resume-modal-actions,
+  .resume-cert-btn,
+  .cert-actions-bar,
+  .cert-tabs,
+  .toast-container,
+  .back-to-top-btn,
+  #projectModal,
+  #uiLightboxModal,
+  #paymentModal {
+    display: none !important;
+  }
+
+  /* Printable Resume Area Formatting */
+  #printableResumeArea {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #1e293b !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  #printableResumeArea * {
+    visibility: visible !important;
+  }
+
+  .resume-header {
+    border-bottom: 2px solid #0f172a !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 8px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+  }
+
+  .resume-name {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    line-height: 1.15 !important;
+    margin: 0 0 3px 0 !important;
+  }
+
+  .resume-role {
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    color: #3730a3 !important;
+    line-height: 1.2 !important;
+  }
+
+  .resume-contact-inline {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    color: #334155 !important;
+    text-align: right !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1px !important;
+  }
+
+  .resume-contact-inline a {
+    color: #3730a3 !important;
+    text-decoration: none !important;
+  }
+
+  .resume-section-title {
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    border-bottom: 1.5px solid #0f172a !important;
+    padding-bottom: 2px !important;
+    margin: 8px 0 4px 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  #printableResumeArea p,
+  #printableResumeArea div {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 4px !important;
+    color: #1e293b !important;
+    font-weight: 500 !important;
+  }
+
+  #printableResumeArea p strong,
+  #printableResumeArea div strong {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  .resume-item {
+    margin-bottom: 6px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .resume-item-top {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #0f172a !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  .resume-item-sub {
+    font-size: 0.78rem !important;
+    color: #475569 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .resume-bullet-list {
+    padding-left: 14px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+    color: #334155 !important;
+    margin: 2px 0 3px 0 !important;
+  }
+
+  .resume-bullet-list li {
+    margin-bottom: 2px !important;
+  }
+}

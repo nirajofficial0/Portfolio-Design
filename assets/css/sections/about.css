@@ -1,0 +1,105 @@
+/* ==========================================================================
+   2. ABOUT ME SECTION
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-intro-p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.highlight-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-smooth);
+}
+
+.highlight-box:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.highlight-icon {
+  font-size: 1.4rem;
+  color: var(--accent-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.highlight-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.highlight-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Bento Grid on the Right of About */
+.about-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  transition: all var(--transition-smooth);
+}
+
+.bento-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.bento-card.full-width {
+  grid-column: span 2;
+}
+
+.bento-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.bento-header i {
+  font-size: 1.1rem;
+  color: var(--accent-primary);
+}
+
+.bento-header h4 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.bento-p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

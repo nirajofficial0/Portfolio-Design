@@ -1,0 +1,95 @@
+  <!-- ==========================================================================
+       10. PAYMENT / SUPPORT GATEWAY (QR, UPI, NETBANKING)
+       ========================================================================== -->
+  <section id="payment" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-wallet"></i> Instant Payment & Support</span>
+        <h2 class="section-title">Support / <span class="text-gradient">Freelance Pay</span></h2>
+        <p class="section-subtitle">Support my open-source work or pay for freelance web development milestones seamlessly via dynamic UPI QR code or NetBanking.</p>
+      </div>
+
+      <div class="payment-wrapper">
+        <div class="payment-grid">
+          <!-- Left: Options & UPI Details -->
+          <div class="payment-options-side">
+            <h3 style="font-size: 1.4rem; font-weight: 700;">1. Choose or Enter Amount</h3>
+            
+            <div class="amount-selector-group">
+			  <button class="amount-btn active" data-amount="1">₹1</button>
+              <button class="amount-btn" data-amount="50">₹50</button>
+              <button class="amount-btn" data-amount="100">₹100</button>
+              <button class="amount-btn" data-amount="500">₹500</button>
+              <button class="amount-btn" data-amount="1000">₹1000</button>
+            </div>
+
+            <div>
+              <label class="form-label">Custom Amount (INR):</label>
+              <div class="custom-amount-input-wrap">
+                <span>₹</span>
+                <input type="text" id="customAmountInput" value="100" placeholder="Enter custom amount">
+              </div>
+            </div>
+
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-top:0.5rem;">2. Pay via Installed UPI App</h3>
+            <div class="upi-apps-row">
+              <a href="#" id="gpayDeepLink" class="upi-app-btn"><i class="fa-brands fa-google-pay"></i> Google Pay</a>
+              <a href="#" id="phonepeDeepLink" class="upi-app-btn"><i class="fa-solid fa-mobile-screen"></i> PhonePe</a>
+              <a href="#" id="paytmDeepLink" class="upi-app-btn"><i class="fa-solid fa-wallet"></i> Paytm / BHIM</a>
+            </div>
+
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-top:0.5rem;">3. Copy UPI ID</h3>
+            <div class="upi-id-copy-box">
+              <div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">UPI ID</div>
+                <div class="upi-id-text">7348541169@upi</div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="copyToClipboard('7348541169@upi', 'UPI ID copied: 7348541169@upi')">
+                <i class="fa-solid fa-copy"></i> Copy
+              </button>
+            </div>
+
+            <!-- Netbanking Details Box -->
+            <div class="netbanking-details-box">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+                <span style="font-weight:700; color:var(--text-primary);"><i class="fa-solid fa-building-columns"></i> NetBanking / Bank Transfer</span>
+                <button class="btn btn-outline btn-sm" style="padding:0.2rem 0.6rem; font-size:0.75rem;" onclick="copyToClipboard('Acc: 50100693656834 | IFSC: HDFC0005274 | Bank: HDFC Bank', 'Bank details copied!')">
+                  <i class="fa-solid fa-copy"></i> Copy All
+                </button>
+              </div>
+              <div class="bank-row">
+                <span class="bank-label">Bank Name:</span>
+                <span class="bank-value">HDFC Bank</span>
+              </div>
+              <div class="bank-row">
+                <span class="bank-label">Account Holder:</span>
+                <span class="bank-value">Neeraj Kumar Patel</span>
+              </div>
+              <div class="bank-row">
+                <span class="bank-label">IFSC Code:</span>
+                <span class="bank-value">HDFC0005274</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Dynamic Live QR Code -->
+          <div class="payment-qr-side">
+            <h4 style="font-size:1.15rem; font-weight:700;">Scan & Pay with Any UPI App</h4>
+            <div class="qr-amount-indicator" id="qrAmountIndicator">₹100</div>
+            
+            <div class="qr-code-frame">
+              <img id="upiQrCodeImage" src="assets/img/QR.jpeg" alt="UPI QR Code" class="qr-img">
+            </div>
+
+            <p style="font-size:0.82rem; color:var(--text-muted); text-align:center;">
+              Works with Google Pay, PhonePe, Paytm, BHIM, Cred, and all bank UPI apps.
+            </p>
+
+            <div style="background:rgba(99,102,241,0.08); padding:0.8rem 1rem; border-radius:8px; border:1px solid var(--border-color); font-size:0.82rem; color:var(--text-secondary); width:100%;">
+              <i class="fa-solid fa-bell" style="color:var(--accent-secondary);"></i> After payment, please send screenshot to: <a href="mailto:nirajpatel12052003@gmail.com?subject=Payment%20Screenshot%20Confirmation" style="color:var(--accent-secondary); font-weight:700; text-decoration:underline;">nirajpatel12052003@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
