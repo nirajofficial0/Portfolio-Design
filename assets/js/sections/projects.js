@@ -31,7 +31,7 @@ const projectDatabase = {
   'ecommerce': {
     title: 'NextGen E-Commerce Web Store',
     category: 'Frontend & Modern Web Application',
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=80',
+    image: 'assets/img/E-Com.png',
     badge: 'React & JS Showcase',
     problem: 'Traditional small business websites have clunky navigation, slow load times, and poor mobile checkout flows that cause high cart abandonment.',
     solution: 'A high-speed, modern E-Commerce web experience with lightning-fast catalog filtering, interactive cart state management, persistent LocalStorage cart sync, coupon engine, and seamless checkout workflow simulation.',
@@ -48,7 +48,7 @@ const projectDatabase = {
       'Built state management architecture for instant cart updates without page reload.',
       'Integrated local storage persistence to retain user cart items across sessions.'
     ],
-    github: 'https://github.com/nirajofficial0/ecommerce-store-web',
+    github: 'https://github.com/nirajofficial0/NextGen-E-commerce',
     demo: '#ecommerce-preview'
   },
   'admin-dashboard': {
