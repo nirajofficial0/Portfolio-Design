@@ -231,9 +231,15 @@
   }
 
   // 5. STEALTH ADMIN ACCESS FOR OWNER (NEERAJ KUMAR PATEL)
-  // Completely hidden from ordinary visitors. Accessible via shortcut or secret footer trigger.
+  // Completely hidden from ordinary visitors.
+  // Access methods:
+  // - Mobile: Long press (touch and hold for 2 seconds) on top "N" logo badge
+  // - Mobile: 3 quick taps on the footer copyright text
+  // - Desktop: Ctrl + Shift + A (or Alt + A)
+  // - Desktop: Double click on footer copyright text
+  // - Direct URL: /admin.html in browser address bar
   function initStealthAdminAccess() {
-    // Hotkey: Ctrl + Shift + A or Alt + A
+    // Desktop Hotkey: Ctrl + Shift + A or Alt + A
     window.addEventListener('keydown', function(e) {
       if ((e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) ||
           (e.altKey && (e.key === 'A' || e.key === 'a'))) {
@@ -242,11 +248,52 @@
       }
     });
 
-    // Hidden footer trigger: Double click on copyright symbol '©'
+    // Mobile Secret 1: Touch and Hold (Long Press 2 seconds) on "N" Brand Logo
+    const brandLogos = document.querySelectorAll('.brand-logo .logo-badge, .site-header .brand-logo');
+    brandLogos.forEach(logo => {
+      let pressTimer = null;
+      logo.addEventListener('touchstart', function() {
+        pressTimer = setTimeout(() => {
+          if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
+          window.location.href = 'admin.html';
+        }, 1800);
+      }, { passive: true });
+
+      logo.addEventListener('touchend', function() {
+        if (pressTimer) clearTimeout(pressTimer);
+      }, { passive: true });
+
+      logo.addEventListener('touchcancel', function() {
+        if (pressTimer) clearTimeout(pressTimer);
+      }, { passive: true });
+    });
+
+    // Mobile Secret 2 & Desktop Secret: Footer Copyright Text Trigger
     const footerText = document.querySelector('.footer-bottom p');
     if (footerText) {
+      // Desktop double click
       footerText.addEventListener('dblclick', function() {
         window.location.href = 'admin.html';
+      });
+
+      // Mobile 3 quick taps trigger
+      let tapCount = 0;
+      let lastTapTime = 0;
+      footerText.addEventListener('touchend', function() {
+        const currentTime = Date.now();
+        const tapInterval = currentTime - lastTapTime;
+        if (tapInterval < 500 && tapInterval > 0) {
+          tapCount++;
+        } else {
+          tapCount = 1;
+        }
+        lastTapTime = currentTime;
+
+        if (tapCount >= 3) {
+          tapCount = 0;
+          if (navigator.vibrate) navigator.vibrate(50);
+          window.location.href = 'admin.html';
+        }
       });
     }
   }

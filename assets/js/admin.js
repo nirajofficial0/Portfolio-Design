@@ -26,7 +26,7 @@
 
   // Owner Secret 6-Digit Master Recovery PIN: 120503
   const MASTER_PIN_HASH = '6a42e557ce95a605c58fecd0058c0c773d9f818dd4752a18c58c13abc9bc5238';
-  const AUTHORIZED_EMAIL = 'nirajpatel12052003@gmail.com';
+  const AUTHORIZED_EMAIL = 'neerajkmpatel@gmail.com';
 
   const MAX_FAILED_ATTEMPTS = 5;
   const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15-minute security lockout
@@ -820,7 +820,7 @@
 
   // 7. SETTINGS TAB
   function renderSettingsInfo() {
-    const recoveryEmail = localStorage.getItem('admin_recovery_email') || 'nirajpatel12052003@gmail.com';
+    const recoveryEmail = localStorage.getItem('admin_recovery_email') || 'neerajkpatel@gmail.com';
     const emailInput = document.getElementById('settingsRecoveryEmail');
     if (emailInput) emailInput.value = recoveryEmail;
   }
