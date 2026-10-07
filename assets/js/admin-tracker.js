@@ -230,6 +230,27 @@
     });
   }
 
+  // 5. STEALTH ADMIN ACCESS FOR OWNER (NEERAJ KUMAR PATEL)
+  // Completely hidden from ordinary visitors. Accessible via shortcut or secret footer trigger.
+  function initStealthAdminAccess() {
+    // Hotkey: Ctrl + Shift + A or Alt + A
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) ||
+          (e.altKey && (e.key === 'A' || e.key === 'a'))) {
+        e.preventDefault();
+        window.location.href = 'admin.html';
+      }
+    });
+
+    // Hidden footer trigger: Double click on copyright symbol '©'
+    const footerText = document.querySelector('.footer-bottom p');
+    if (footerText) {
+      footerText.addEventListener('dblclick', function() {
+        window.location.href = 'admin.html';
+      });
+    }
+  }
+
   // Admin session helper
   window.checkAdminSession = function() {
     return sessionStorage.getItem('admin_authenticated_session') === 'true' ||
@@ -242,10 +263,12 @@
       recordProfileVisit();
       hookContactForm();
       attachReachListeners();
+      initStealthAdminAccess();
     });
   } else {
     recordProfileVisit();
     hookContactForm();
     attachReachListeners();
+    initStealthAdminAccess();
   }
 })();

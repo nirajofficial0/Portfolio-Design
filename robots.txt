@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /admin.html
 Allow: /
 
 Sitemap: https://neerajkumarpatel-portfolio.vercel.app/sitemap.xml

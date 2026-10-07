@@ -16,6 +16,21 @@
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
+  // --- PRE-CONFIGURED MASTER CREDENTIALS FOR PORTFOLIO OWNER (NEERAJ KUMAR PATEL) ---
+  // Default master passwords: Neeraj@Admin2026, Niraj@Admin2026, admin123
+  const MASTER_HASHES = [
+    'df115110e8916f3e77e9ffbc462e556c375d7e916dc5cb8145b59d2f4bb98a64', // Neeraj@Admin2026
+    '0847168cfc3b6114ee963d7910e74b2b3dd3d25f7fd42482415d51683c7e1c01', // Niraj@Admin2026
+    'f1bb7040d1869879eced3ba820b517074b47f4a8b0ad9903346f7c3924183ca8'  // admin123
+  ];
+
+  // Owner Secret 6-Digit Master Recovery PIN: 120503
+  const MASTER_PIN_HASH = '6a42e557ce95a605c58fecd0058c0c773d9f818dd4752a18c58c13abc9bc5238';
+  const AUTHORIZED_EMAIL = 'nirajpatel12052003@gmail.com';
+
+  const MAX_FAILED_ATTEMPTS = 5;
+  const LOCKOUT_DURATION_MS = 15 * 60 * 1000; // 15-minute security lockout
+
   // --- LOCAL STORAGE HELPERS ---
   function getStorage(key, defaultVal) {
     try {
@@ -91,88 +106,99 @@
   let currentActiveTab = 'overview';
   let activeMessageDetailId = null;
 
-  // --- AUTHENTICATION ENGINE ---
+  // --- AUTHENTICATION ENGINE (STRICT ADMIN ACCESS - PORTFOLIO OWNER ONLY) ---
+  function checkLockoutStatus() {
+    const lockoutUntil = parseInt(localStorage.getItem('admin_lockout_until') || '0', 10);
+    const banner = document.getElementById('loginLockoutBanner');
+    const submitBtn = document.getElementById('loginSubmitBtn');
+    const pwdInput = document.getElementById('loginPassword');
+
+    if (Date.now() < lockoutUntil) {
+      const remainingSec = Math.ceil((lockoutUntil - Date.now()) / 1000);
+      const remainingMin = Math.ceil(remainingSec / 60);
+      if (banner) {
+        banner.classList.remove('hidden');
+        banner.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Security Lockout Active: Too many failed attempts. Try again in ${remainingMin} minute(s).`;
+      }
+      if (submitBtn) submitBtn.disabled = true;
+      if (pwdInput) pwdInput.disabled = true;
+      return true;
+    } else {
+      if (banner) banner.classList.add('hidden');
+      if (submitBtn) submitBtn.disabled = false;
+      if (pwdInput) pwdInput.disabled = false;
+      return false;
+    }
+  }
+
+  function recordFailedAttempt() {
+    let attempts = parseInt(localStorage.getItem('admin_failed_attempts') || '0', 10) + 1;
+    localStorage.setItem('admin_failed_attempts', attempts);
+    if (attempts >= MAX_FAILED_ATTEMPTS) {
+      localStorage.setItem('admin_lockout_until', Date.now() + LOCKOUT_DURATION_MS);
+      checkLockoutStatus();
+      showToast('Maximum failed attempts reached. Portal temporarily locked for 15 minutes.', 'error');
+    } else {
+      const remaining = MAX_FAILED_ATTEMPTS - attempts;
+      showToast(`Incorrect password! (${remaining} attempt${remaining === 1 ? '' : 's'} remaining before security lockout)`, 'error');
+    }
+  }
+
+  function resetFailedAttempts() {
+    localStorage.removeItem('admin_failed_attempts');
+    localStorage.removeItem('admin_lockout_until');
+  }
+
   function initAuth() {
     const authWrapper = document.getElementById('authWrapper');
     const adminLayout = document.getElementById('adminLayout');
-    const setupCard = document.getElementById('setupCard');
     const loginCard = document.getElementById('loginCard');
 
-    const storedHash = localStorage.getItem('admin_pwd_hash');
     const isAuthenticated = sessionStorage.getItem('admin_authenticated_session') === 'true' ||
                             localStorage.getItem('admin_authenticated_persistent') === 'true';
 
-    if (isAuthenticated && storedHash) {
-      authWrapper.classList.add('hidden');
-      adminLayout.classList.remove('hidden');
+    if (isAuthenticated) {
+      if (authWrapper) authWrapper.classList.add('hidden');
+      if (adminLayout) adminLayout.classList.remove('hidden');
       loadAllDashboardData();
       return;
     }
 
-    authWrapper.classList.remove('hidden');
-    adminLayout.classList.add('hidden');
+    if (authWrapper) authWrapper.classList.remove('hidden');
+    if (adminLayout) adminLayout.classList.add('hidden');
+    if (loginCard) loginCard.classList.remove('hidden');
 
-    if (!storedHash) {
-      // First time setup - create personalized password
-      setupCard.classList.remove('hidden');
-      loginCard.classList.add('hidden');
-    } else {
-      // Password already personalized, show login
-      setupCard.classList.add('hidden');
-      loginCard.classList.remove('hidden');
-    }
-  }
-
-  // Handle First-Time Password Setup
-  async function handleSetupSubmit(e) {
-    e.preventDefault();
-    const newPwd = document.getElementById('setupPassword').value;
-    const confirmPwd = document.getElementById('setupConfirmPassword').value;
-    const email = document.getElementById('setupEmail').value.trim();
-
-    if (newPwd.length < 5) {
-      showToast('Password should be at least 5 characters.', 'error');
-      return;
-    }
-    if (newPwd !== confirmPwd) {
-      showToast('Passwords do not match.', 'error');
-      return;
-    }
-    if (!email) {
-      showToast('Please provide a recovery email.', 'error');
-      return;
-    }
-
-    const hash = await hashPassword(newPwd);
-    localStorage.setItem('admin_pwd_hash', hash);
-    localStorage.setItem('admin_recovery_email', email);
-    sessionStorage.setItem('admin_authenticated_session', 'true');
-
-    showToast('Personalized password saved successfully!', 'success');
-    document.getElementById('authWrapper').classList.add('hidden');
-    document.getElementById('adminLayout').classList.remove('hidden');
-    loadAllDashboardData();
+    checkLockoutStatus();
   }
 
   // Handle Login Submit
   async function handleLoginSubmit(e) {
     e.preventDefault();
-    const enteredPwd = document.getElementById('loginPassword').value;
-    const rememberMe = document.getElementById('rememberMeCheckbox').checked;
-    const storedHash = localStorage.getItem('admin_pwd_hash');
+    if (checkLockoutStatus()) {
+      showToast('Security lockout is active. Please wait before trying again.', 'error');
+      return;
+    }
 
+    const enteredPwd = document.getElementById('loginPassword').value;
+    const rememberMe = document.getElementById('rememberMeCheckbox')?.checked;
     const enteredHash = await hashPassword(enteredPwd);
-    if (enteredHash === storedHash) {
+
+    const customHash = localStorage.getItem('admin_custom_pwd_hash');
+    const isCustomMatch = customHash && (enteredHash === customHash);
+    const isMasterMatch = MASTER_HASHES.includes(enteredHash);
+
+    if (isCustomMatch || (!customHash && isMasterMatch)) {
+      resetFailedAttempts();
       sessionStorage.setItem('admin_authenticated_session', 'true');
       if (rememberMe) {
         localStorage.setItem('admin_authenticated_persistent', 'true');
       }
-      showToast('Welcome back, Admin!', 'success');
+      showToast('Welcome back, Admin Neeraj!', 'success');
       document.getElementById('authWrapper').classList.add('hidden');
       document.getElementById('adminLayout').classList.remove('hidden');
       loadAllDashboardData();
     } else {
-      showToast('Incorrect password. Please try again.', 'error');
+      recordFailedAttempt();
     }
   }
 
@@ -186,65 +212,53 @@
     }, 400);
   }
 
-  // Forgot Password Modal & Mock Email Simulation
+  // Secure Forgot Password Modal
   function openForgotModal() {
     const modal = document.getElementById('forgotModal');
-    const storedEmail = localStorage.getItem('admin_recovery_email') || 'nirajpatel12052003@gmail.com';
-    document.getElementById('forgotEmailInput').value = storedEmail;
-    document.getElementById('mockEmailBox').classList.add('hidden');
-    document.getElementById('forgotStep1').classList.remove('hidden');
-    document.getElementById('forgotStep2').classList.add('hidden');
-    modal.classList.remove('hidden');
+    const storedEmail = localStorage.getItem('admin_recovery_email') || AUTHORIZED_EMAIL;
+    const emailInput = document.getElementById('forgotEmailInput');
+    if (emailInput) emailInput.value = storedEmail;
+    const pinInput = document.getElementById('forgotMasterPin');
+    if (pinInput) pinInput.value = '';
+
+    document.getElementById('forgotStep1')?.classList.remove('hidden');
+    document.getElementById('forgotStep2')?.classList.add('hidden');
+    if (modal) modal.classList.remove('hidden');
   }
 
   function closeForgotModal() {
-    document.getElementById('forgotModal').classList.add('hidden');
+    const modal = document.getElementById('forgotModal');
+    if (modal) modal.classList.add('hidden');
   }
 
-  function triggerMockRecoveryEmail() {
-    const email = document.getElementById('forgotEmailInput').value.trim();
-    if (!email) {
-      showToast('Please enter your recovery email.', 'error');
+  // Verify Owner Credentials with Secret 6-Digit Master PIN
+  async function verifyRecoveryPin() {
+    const email = document.getElementById('forgotEmailInput')?.value.trim().toLowerCase();
+    const pin = document.getElementById('forgotMasterPin')?.value.trim();
+
+    if (!email || !pin) {
+      showToast('Please enter both recovery email and 6-digit Master PIN.', 'error');
       return;
     }
 
-    const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
-    sessionStorage.setItem('active_reset_code', resetCode);
+    const authorized = (localStorage.getItem('admin_recovery_email') || AUTHORIZED_EMAIL).toLowerCase();
+    const pinHash = await hashPassword(pin);
 
-    document.getElementById('forgotStep1').classList.add('hidden');
-    document.getElementById('mockEmailBox').classList.remove('hidden');
-
-    document.getElementById('mockRecipient').textContent = email;
-    document.getElementById('mockOtpCode').textContent = resetCode;
-
-    showToast(`Simulation: Password reset email dispatched to ${email}!`, 'success');
-  }
-
-  function proceedToReset() {
-    const inputCode = document.getElementById('resetCodeInput').value.trim();
-    const actualCode = sessionStorage.getItem('active_reset_code');
-
-    if (inputCode !== actualCode) {
-      showToast('Invalid recovery code. Check simulated email.', 'error');
-      return;
+    if (email === authorized && pinHash === MASTER_PIN_HASH) {
+      document.getElementById('forgotStep1')?.classList.add('hidden');
+      document.getElementById('forgotStep2')?.classList.remove('hidden');
+      showToast('Owner identity verified! Please create your new password.', 'success');
+    } else {
+      showToast('Verification failed: Unauthorized credentials or invalid Master PIN.', 'error');
     }
-
-    document.getElementById('mockEmailBox').classList.add('hidden');
-    document.getElementById('forgotStep2').classList.remove('hidden');
-  }
-
-  function quickResetFromEmail() {
-    const actualCode = sessionStorage.getItem('active_reset_code');
-    document.getElementById('resetCodeInput').value = actualCode;
-    proceedToReset();
   }
 
   async function finalizePasswordReset(e) {
-    e.preventDefault();
-    const newPwd = document.getElementById('resetNewPassword').value;
-    const confirmPwd = document.getElementById('resetConfirmPassword').value;
+    if (e) e.preventDefault();
+    const newPwd = document.getElementById('resetNewPassword')?.value;
+    const confirmPwd = document.getElementById('resetConfirmPassword')?.value;
 
-    if (newPwd.length < 5) {
+    if (!newPwd || newPwd.length < 5) {
       showToast('Password must be at least 5 characters.', 'error');
       return;
     }
@@ -254,9 +268,15 @@
     }
 
     const hash = await hashPassword(newPwd);
-    localStorage.setItem('admin_pwd_hash', hash);
+    localStorage.setItem('admin_custom_pwd_hash', hash);
+    resetFailedAttempts();
     closeForgotModal();
-    showToast('Password updated! You can now log in with your new password.', 'success');
+    showToast('Admin password updated successfully! Please login with your new password.', 'success');
+    const pwdInput = document.getElementById('loginPassword');
+    if (pwdInput) {
+      pwdInput.value = '';
+      pwdInput.focus();
+    }
   }
 
   // --- TAB NAVIGATION ---
@@ -811,10 +831,11 @@
     const newPwd = document.getElementById('newPassword').value;
     const confirmPwd = document.getElementById('confirmNewPassword').value;
 
-    const storedHash = localStorage.getItem('admin_pwd_hash');
+    const customHash = localStorage.getItem('admin_custom_pwd_hash');
     const enteredCurrentHash = await hashPassword(currentPwd);
+    const isValidCurrent = customHash ? (enteredCurrentHash === customHash) : MASTER_HASHES.includes(enteredCurrentHash);
 
-    if (enteredCurrentHash !== storedHash) {
+    if (!isValidCurrent) {
       showToast('Current password does not match.', 'error');
       return;
     }
@@ -828,9 +849,9 @@
     }
 
     const newHash = await hashPassword(newPwd);
-    localStorage.setItem('admin_pwd_hash', newHash);
+    localStorage.setItem('admin_custom_pwd_hash', newHash);
     document.getElementById('changePasswordForm').reset();
-    showToast('Password changed successfully!', 'success');
+    showToast('Admin password changed successfully!', 'success');
   }
 
   function handleSaveRecoveryEmail(e) {
@@ -901,7 +922,6 @@
       document.getElementById('adminSidebar')?.classList.toggle('open');
     });
 
-    document.getElementById('setupForm')?.addEventListener('submit', handleSetupSubmit);
     document.getElementById('loginForm')?.addEventListener('submit', handleLoginSubmit);
     document.getElementById('forgotFormStep2')?.addEventListener('submit', finalizePasswordReset);
     document.getElementById('changePasswordForm')?.addEventListener('submit', handleChangePassword);
@@ -926,9 +946,8 @@
     handleLogout,
     openForgotModal,
     closeForgotModal,
-    triggerMockRecoveryEmail,
-    quickResetFromEmail,
-    proceedToReset,
+    verifyRecoveryPin,
+    finalizePasswordReset,
     openMessageDetail,
     closeMessageDetail,
     replyToSender,

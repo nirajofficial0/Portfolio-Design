@@ -164,11 +164,6 @@
 
   // 3. RENDER REVIEWS & RATINGS SUMMARY
   function renderPortfolioReviews() {
-    const isAuth = sessionStorage.getItem('admin_authenticated_session') === 'true' ||
-                   localStorage.getItem('admin_authenticated_persistent') === 'true';
-
-    const lockedView = document.getElementById('portfolioReviewsLockedView');
-    const unlockedView = document.getElementById('portfolioReviewsUnlockedView');
     const scoreEl = document.getElementById('portfolioAvgScore');
     const totalCountEl = document.getElementById('portfolioReviewsTotalCount');
     const visitorAvgDisplay = document.getElementById('visitorReviewsAvgSummary');
@@ -192,100 +187,41 @@
     if (scoreEl) scoreEl.textContent = avg;
     if (totalCountEl) totalCountEl.textContent = `${reviews.length} Verified Endorsement${reviews.length === 1 ? '' : 's'}`;
 
-    if (!lockedView || !unlockedView) return;
-
-    if (isAuth) {
-      lockedView.classList.add('hidden');
-      unlockedView.classList.remove('hidden');
-
-      const grid = document.getElementById('portfolioReviewsGrid');
-      if (grid) {
-        const approved = reviews.filter(r => r.status !== 'hidden');
-        if (approved.length === 0) {
-          grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--text-muted);"><i class="fa-solid fa-star-half-stroke" style="font-size:1.5rem; display:block; margin-bottom:0.5rem; color:var(--text-dim);"></i> No reviews submitted yet. Submit one using the form above!</div>`;
-        } else {
-          grid.innerHTML = approved.map(rev => {
-            const stars = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
-            const initials = rev.author ? rev.author.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'V';
-            return `
-              <div class="portfolio-review-card">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                  <div class="portfolio-review-rating">${stars}</div>
-                  <span class="badge badge-approved" style="font-size:0.75rem; padding:0.2rem 0.5rem; background:rgba(6,182,212,0.15); color:var(--accent-secondary); border-radius:999px;">${escapeHtml(rev.category || 'Client')}</span>
-                </div>
-                <p class="portfolio-review-text">"${escapeHtml(rev.comment)}"</p>
-                <div class="portfolio-review-author">
-                  <div class="review-author-avatar">${initials}</div>
-                  <div>
-                    <div class="review-author-name">${escapeHtml(rev.author)}</div>
-                    <div class="review-author-role">${escapeHtml(rev.role || 'Visitor')}</div>
-                  </div>
+    const grid = document.getElementById('portfolioReviewsGrid');
+    if (grid) {
+      const approved = reviews.filter(r => r.status !== 'hidden');
+      if (approved.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--text-muted);"><i class="fa-solid fa-star-half-stroke" style="font-size:1.5rem; display:block; margin-bottom:0.5rem; color:var(--text-dim);"></i> No testimonials submitted yet. Be the first to share your experience above!</div>`;
+      } else {
+        grid.innerHTML = approved.map(rev => {
+          const stars = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
+          const initials = rev.author ? rev.author.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'V';
+          return `
+            <div class="portfolio-review-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <div class="portfolio-review-rating">${stars}</div>
+                <span class="badge badge-approved" style="font-size:0.75rem; padding:0.2rem 0.5rem; background:rgba(6,182,212,0.15); color:var(--accent-secondary); border-radius:999px;">${escapeHtml(rev.category || 'Client')}</span>
+              </div>
+              <p class="portfolio-review-text">"${escapeHtml(rev.comment)}"</p>
+              <div class="portfolio-review-author">
+                <div class="review-author-avatar">${initials}</div>
+                <div>
+                  <div class="review-author-name">${escapeHtml(rev.author)}</div>
+                  <div class="review-author-role">${escapeHtml(rev.role || 'Visitor')}</div>
                 </div>
               </div>
-            `;
-          }).join('');
-        }
+            </div>
+          `;
+        }).join('');
       }
-    } else {
-      lockedView.classList.remove('hidden');
-      unlockedView.classList.add('hidden');
     }
   }
 
-  // 4. ADMIN UNLOCK / LOCK ACTIONS
-  window.openAdminReviewUnlockModal = function () {
-    const storedHash = localStorage.getItem('admin_pwd_hash');
-    if (!storedHash) {
-      if (typeof window.showToast === 'function') {
-        window.showToast('Please create your personalized password in Admin Dashboard first.', 'info');
-      }
-      setTimeout(() => {
-        window.location.href = 'admin.html';
-      }, 700);
-      return;
-    }
-
-    const modal = document.getElementById('adminReviewUnlockModal');
-    if (modal) modal.classList.add('active');
-  };
-
-  window.closeAdminReviewUnlockModal = function () {
-    const modal = document.getElementById('adminReviewUnlockModal');
-    if (modal) modal.classList.remove('active');
-  };
-
-  window.submitAdminReviewPassword = async function (e) {
-    if (e) e.preventDefault();
-    const input = document.getElementById('portfolioAdminPasswordInput');
-    if (!input) return;
-
-    const entered = input.value;
-    const storedHash = localStorage.getItem('admin_pwd_hash');
-    const enteredHash = await hashPassword(entered);
-
-    if (enteredHash === storedHash) {
-      sessionStorage.setItem('admin_authenticated_session', 'true');
-      if (typeof window.showToast === 'function') {
-        window.showToast('Admin authenticated! Vault unlocked.', 'success');
-      }
-      window.closeAdminReviewUnlockModal();
-      renderPortfolioReviews();
-      input.value = '';
-    } else {
-      if (typeof window.showToast === 'function') {
-        window.showToast('Incorrect password. Please try again.', 'error');
-      }
-    }
-  };
-
-  window.lockAdminReviews = function () {
-    sessionStorage.removeItem('admin_authenticated_session');
-    localStorage.removeItem('admin_authenticated_persistent');
-    if (typeof window.showToast === 'function') {
-      window.showToast('Admin session locked.', 'info');
-    }
-    renderPortfolioReviews();
-  };
+  // Safe fallback handlers for any legacy references
+  window.openAdminReviewUnlockModal = function () {};
+  window.closeAdminReviewUnlockModal = function () {};
+  window.submitAdminReviewPassword = function (e) { if (e) e.preventDefault(); };
+  window.lockAdminReviews = function () {};
 
   function escapeHtml(str) {
     if (!str) return '';
