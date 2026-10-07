@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Neeraj Kumar Patel Portfolio</title>
+  <link rel="icon" href="assets/img/favicon.jpg" type="image/jpeg" />
+
+  <!-- FontAwesome 6 Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts: Inter, Outfit, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Admin Master Stylesheet -->
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body>
+  <!-- Ambient Glow Orbs -->
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- ==========================================================================
+       AUTHENTICATION SECTION (LOGIN & PERSONALIZED PASSWORD SETUP)
+       ========================================================================== -->
+  <div class="auth-wrapper" id="authWrapper">
+    <!-- 1. First-Time Setup Card (Personalize Password) -->
+    <div class="auth-card hidden" id="setupCard">
+      <div class="auth-header">
+        <div class="auth-logo-badge">N</div>
+        <h2 class="auth-title">Create Admin Password</h2>
+        <p class="auth-subtitle">Set up your personalized password for exclusive portfolio admin access.</p>
+      </div>
+
+      <form id="setupForm" class="auth-form">
+        <div class="form-group">
+          <label class="form-label" for="setupPassword">Personalized Password</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input type="password" id="setupPassword" class="form-input" placeholder="Enter secure password" required minlength="5" />
+            <button type="button" class="toggle-pwd-btn" data-target="setupPassword" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="setupConfirmPassword">Confirm Password</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-check-double input-icon"></i>
+            <input type="password" id="setupConfirmPassword" class="form-input" placeholder="Repeat your password" required minlength="5" />
+            <button type="button" class="toggle-pwd-btn" data-target="setupConfirmPassword" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="setupEmail">Recovery Email (For Forgot Password)</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-envelope input-icon"></i>
+            <input type="email" id="setupEmail" class="form-input" value="nirajpatel12052003@gmail.com" placeholder="recovery@example.com" required />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="margin-top:0.5rem;">
+          <i class="fa-solid fa-shield-halved"></i> Save Password & Enter Dashboard
+        </button>
+      </form>
+    </div>
+
+    <!-- 2. Returning Admin Login Card -->
+    <div class="auth-card" id="loginCard">
+      <div class="auth-header">
+        <div class="auth-logo-badge">N</div>
+        <h2 class="auth-title">Admin Authentication</h2>
+        <p class="auth-subtitle">Enter your personalized password to access your control panel.</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Admin Password</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-key input-icon"></i>
+            <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required />
+            <button type="button" class="toggle-pwd-btn" data-target="loginPassword" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--text-muted);">
+          <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
+            <input type="checkbox" id="rememberMeCheckbox" style="accent-color:var(--accent-primary);" /> Remember me
+          </label>
+          <a href="javascript:void(0)" onclick="adminApp.openForgotModal()" class="auth-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary" style="margin-top:0.75rem;">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Authenticate & Login
+        </button>
+
+        <div class="auth-footer" style="justify-content:center; margin-top:1.25rem;">
+          <a href="index.html" class="auth-link" style="display:flex; align-items:center; gap:0.4rem;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Public Portfolio
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FORGOT PASSWORD MODAL (WITH MOCK EMAIL SIMULATION)
+       ========================================================================== -->
+  <div class="modal-backdrop hidden" id="forgotModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-key" style="color:var(--accent-cyan); margin-right:0.4rem;"></i> Reset Admin Password</h3>
+        <button class="modal-close-btn" onclick="adminApp.closeForgotModal()" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Step 1: Enter recovery email -->
+        <div id="forgotStep1">
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.2rem;">
+            Enter your registered recovery email. We will simulate sending a password reset link and verification code.
+          </p>
+          <div class="form-group" style="margin-bottom:1.2rem;">
+            <label class="form-label" for="forgotEmailInput">Recovery Email Address</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input type="email" id="forgotEmailInput" class="form-input" placeholder="e.g. nirajpatel12052003@gmail.com" required />
+            </div>
+          </div>
+          <button type="button" class="btn-primary" onclick="adminApp.triggerMockRecoveryEmail()">
+            <i class="fa-solid fa-paper-plane"></i> Send Mock Recovery Email
+          </button>
+        </div>
+
+        <!-- Simulated Mock Email Inbox Preview -->
+        <div id="mockEmailBox" class="hidden" style="margin-top:1rem; padding:1.25rem; background:rgba(255,255,255,0.03); border:1px dashed var(--accent-cyan); border-radius:var(--radius-md);">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+            <span class="badge badge-new"><i class="fa-solid fa-envelope"></i> Simulated Email Delivery</span>
+            <span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Just now</span>
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">
+            <strong>From:</strong> security@neerajpatel.dev<br />
+            <strong>To:</strong> <span id="mockRecipient"></span><br />
+            <strong>Subject:</strong> Password Reset Code & Recovery Link
+          </div>
+          <div style="background:rgba(0,0,0,0.4); padding:1rem; border-radius:var(--radius-sm); margin:0.75rem 0; text-align:center;">
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;">Your 6-Digit Password Reset OTP:</div>
+            <div id="mockOtpCode" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--accent-cyan); letter-spacing:4px;">123456</div>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
+            <button type="button" class="btn-primary" style="flex:1;" onclick="adminApp.quickResetFromEmail()">
+              <i class="fa-solid fa-bolt"></i> One-Click Auto Verify & Reset
+            </button>
+          </div>
+
+          <div style="margin-top:1.2rem; display:flex; gap:0.5rem;">
+            <input type="text" id="resetCodeInput" class="form-input" placeholder="Or enter 6-digit OTP code" maxlength="6" style="text-align:center; font-family:var(--font-mono); letter-spacing:2px;" />
+            <button type="button" class="btn-secondary" onclick="adminApp.proceedToReset()">Verify OTP</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Set New Password -->
+        <div id="forgotStep2" class="hidden">
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.2rem;">
+            Code verified! Please create your new personalized password.
+          </p>
+          <form id="forgotFormStep2" class="auth-form">
+            <div class="form-group">
+              <label class="form-label" for="resetNewPassword">New Password</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="resetNewPassword" class="form-input" placeholder="New secure password" required minlength="5" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="resetConfirmPassword">Confirm New Password</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-check-double input-icon"></i>
+                <input type="password" id="resetConfirmPassword" class="form-input" placeholder="Repeat new password" required minlength="5" />
+              </div>
+            </div>
+            <button type="submit" class="btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i> Update Password & Finish
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AUTHENTICATED ADMIN DASHBOARD INTERFACE
+       ========================================================================== -->
+  <div class="admin-layout hidden" id="adminLayout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo-badge">N</div>
+        <div>
+          <div class="sidebar-brand-name">NEERAJ<span style="color:var(--accent-cyan);">.ADMIN</span></div>
+          <div style="font-size:0.75rem; color:var(--text-dim);">Portfolio Command Center</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="overview">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Overview</span>
+        </button>
+
+        <button class="nav-item" data-tab="messages">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <span>Messages</span>
+          <span class="nav-badge" id="sidebarMessagesBadge">3</span>
+        </button>
+
+        <button class="nav-item" data-tab="mail">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Mail Launcher</span>
+        </button>
+
+        <button class="nav-item" data-tab="reach">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Reach Stats</span>
+        </button>
+
+        <button class="nav-item" data-tab="visits">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Profile Visits</span>
+        </button>
+
+        <button class="nav-item" data-tab="reviews">
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <span>Reviews & Ratings</span>
+        </button>
+
+        <button class="nav-item" data-tab="settings">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Security & Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="portfolio-return-btn" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Public Portfolio
+        </a>
+        <button class="logout-btn" onclick="adminApp.handleLogout()">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h1 class="page-title" id="pageTitleText">Dashboard Overview</h1>
+        </div>
+
+        <div class="topbar-right">
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            <span id="liveClockText">Live Tracking</span>
+          </div>
+
+          <div class="admin-profile">
+            <div class="admin-avatar">N</div>
+            <div class="admin-meta">
+              <div class="admin-name">Neeraj Kumar Patel</div>
+              <div class="admin-role">Super Admin</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="admin-content">
+        <!-- ==========================================
+             TAB 1: OVERVIEW
+             ========================================== -->
+        <section class="tab-section" id="tab-overview">
+          <!-- 4 Core Metric Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-top">
+                <div class="stat-icon icon-reach"><i class="fa-solid fa-bullseye"></i></div>
+                <span class="stat-trend trend-up" id="statReachTrend">Live Traffic</span>
+              </div>
+              <div class="stat-num" id="statTotalReach">0</div>
+              <div class="stat-label">Total Portfolio Visits</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-top">
+                <div class="stat-icon icon-visits"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <span class="stat-trend trend-up" id="statUniqueTrend">Real-Time</span>
+              </div>
+              <div class="stat-num" id="statProfileVisits">0</div>
+              <div class="stat-label">Unique Profile Visitors</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-top">
+                <div class="stat-icon icon-messages"><i class="fa-solid fa-comments"></i></div>
+                <span class="stat-trend trend-up" id="statUnreadBadge">0 unread</span>
+              </div>
+              <div class="stat-num" id="statMessagesCount">0</div>
+              <div class="stat-label">Inquiries & Contact Leads</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-top">
+                <div class="stat-icon icon-rating"><i class="fa-solid fa-star"></i></div>
+                <span class="stat-trend trend-up" id="statRatingTrend">Verified</span>
+              </div>
+              <div class="stat-num" id="statAvgRating">0.0 ★</div>
+              <div class="stat-label" id="statReviewsCount">0 reviews</div>
+            </div>
+          </div>
+
+          <!-- Quick Action Bar -->
+          <div class="card-panel" style="background:linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(6,182,212,0.06) 100%); border-color:rgba(6,182,212,0.25);">
+            <div class="panel-header" style="margin-bottom:0.5rem;">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent-cyan);"></i> Quick Shortcuts & Tools</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Instant access to your frequent portfolio actions.</p>
+              </div>
+              <div class="panel-actions">
+                <button class="btn-secondary" onclick="adminApp.switchTab('messages')"><i class="fa-solid fa-inbox"></i> View Inquiries</button>
+                <button class="btn-secondary" onclick="adminApp.switchTab('mail')"><i class="fa-solid fa-paper-plane"></i> Quick Email</button>
+                <button class="btn-secondary" onclick="adminApp.switchTab('reviews')"><i class="fa-solid fa-plus"></i> Add Review</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Inquiries Table -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3 class="panel-title"><i class="fa-solid fa-message" style="color:var(--accent-primary);"></i> Recent Portfolio Inquiries</h3>
+              <button class="btn-secondary" onclick="adminApp.switchTab('messages')">View All Messages &rarr;</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Sender Name</th>
+                    <th>Email Address</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewRecentMessages">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 2: MESSAGES & CONTACT LEADS
+             ========================================== -->
+        <section class="tab-section hidden" id="tab-messages">
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-inbox" style="color:var(--accent-pink);"></i> Contact Form Inquiries</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Real submissions received from your portfolio contact form.</p>
+              </div>
+              <div class="panel-actions">
+                <div class="filter-search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="messageSearchInput" placeholder="Search sender, email, topic..." />
+                </div>
+                <button class="btn-secondary" onclick="adminApp.filterMessages('all')">All</button>
+                <button class="btn-secondary" onclick="adminApp.filterMessages('unread')">Unread</button>
+                <button class="btn-secondary" onclick="adminApp.filterMessages('replied')">Replied</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Received Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="messagesTableBody">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Message Detail & Direct Multi-Channel Reply Modal -->
+        <div class="modal-backdrop hidden" id="messageDetailModal">
+          <div class="modal-dialog" style="max-width: 650px;">
+            <div class="modal-header">
+              <h3 class="modal-title"><i class="fa-solid fa-envelope-open-text" style="color:var(--accent-cyan); margin-right:0.4rem;"></i> Inquiry & Direct Reply Hub</h3>
+              <button class="modal-close-btn" onclick="adminApp.closeMessageDetail()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <!-- Sender Info Bar -->
+              <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1.25rem;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
+                  <div>
+                    <div style="font-size:1.15rem; font-weight:700; color:#fff;" id="modalMsgSubject">Subject</div>
+                    <div style="font-size:0.88rem; color:var(--text-muted); margin-top:0.25rem;">
+                      <strong>From:</strong> <span id="modalMsgSender" style="color:#fff; font-weight:600;"></span> 
+                      &bull; <a href="#" id="modalMsgEmailLink" style="color:var(--accent-cyan); text-decoration:underline;"><span id="modalMsgEmail"></span></a>
+                    </div>
+                    <div id="modalMsgPhoneRow" class="hidden" style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
+                      <i class="fa-solid fa-phone" style="color:var(--accent-emerald);"></i> <strong>Phone:</strong> <span id="modalMsgPhone" style="color:#fff;"></span>
+                    </div>
+                  </div>
+                  <span id="modalMsgDate" style="font-family:var(--font-mono); font-size:0.78rem; color:var(--text-dim);"></span>
+                </div>
+
+                <!-- Fast Contact Action Badges -->
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.75rem; padding-top:0.75rem; border-top:1px dashed var(--border-subtle);">
+                  <button type="button" class="btn-secondary" style="font-size:0.8rem; padding:0.35rem 0.75rem;" onclick="adminApp.replyViaGmailDirect()">
+                    <i class="fa-brands fa-google" style="color:#ea4335;"></i> Gmail Web
+                  </button>
+                  <button type="button" class="btn-secondary" style="font-size:0.8rem; padding:0.35rem 0.75rem;" onclick="adminApp.replyViaMailtoDirect()">
+                    <i class="fa-solid fa-envelope" style="color:var(--accent-cyan);"></i> Default Mail App
+                  </button>
+                  <button type="button" id="modalWhatsAppBtn" class="btn-secondary" style="font-size:0.8rem; padding:0.35rem 0.75rem;" onclick="adminApp.replyViaWhatsAppDirect()">
+                    <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> WhatsApp Chat
+                  </button>
+                  <button type="button" class="btn-secondary" style="font-size:0.8rem; padding:0.35rem 0.75rem;" onclick="adminApp.copySenderEmail()">
+                    <i class="fa-solid fa-copy"></i> Copy Email
+                  </button>
+                </div>
+              </div>
+
+              <!-- Message Content -->
+              <div style="margin-bottom:1.25rem;">
+                <label class="form-label" style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-dim); margin-bottom:0.4rem; display:block;">Original Message</label>
+                <div style="font-size:0.95rem; line-height:1.6; white-space:pre-wrap; background:rgba(0,0,0,0.35); border:1px solid var(--border-subtle); padding:1rem; border-radius:var(--radius-sm); color:var(--text-main);" id="modalMsgBody">
+                  Message body...
+                </div>
+              </div>
+
+              <!-- Direct In-Modal Reply Composer -->
+              <div style="background:rgba(99,102,241,0.06); border:1px solid rgba(99,102,241,0.25); border-radius:var(--radius-sm); padding:1rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                  <label class="form-label" style="font-weight:600; color:var(--accent-cyan); display:flex; align-items:center; gap:0.35rem;">
+                    <i class="fa-solid fa-reply-all"></i> Write Direct Reply
+                  </label>
+                  <div style="display:flex; gap:0.4rem;">
+                    <button type="button" class="btn-secondary" style="font-size:0.75rem; padding:0.2rem 0.5rem;" onclick="adminApp.insertReplyTemplate('interview')">Template: Interview</button>
+                    <button type="button" class="btn-secondary" style="font-size:0.75rem; padding:0.2rem 0.5rem;" onclick="adminApp.insertReplyTemplate('project')">Template: Project</button>
+                  </div>
+                </div>
+
+                <textarea id="modalQuickReplyText" rows="4" class="form-input" style="width:100%; font-size:0.9rem;" placeholder="Type your reply to this sender here..."></textarea>
+              </div>
+            </div>
+            <div class="modal-footer" style="justify-content:space-between;">
+              <button class="btn-secondary" onclick="adminApp.closeMessageDetail()">Close</button>
+              <div style="display:flex; gap:0.6rem;">
+                <button class="btn-secondary" onclick="adminApp.sendQuickReply('mailapp')">
+                  <i class="fa-solid fa-paper-plane"></i> Send via Email App
+                </button>
+                <button class="btn-primary" onclick="adminApp.sendQuickReply('gmail')">
+                  <i class="fa-brands fa-google"></i> Send via Gmail
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 3: MAIL LAUNCHER & COMPOSER
+             ========================================== -->
+        <section class="tab-section hidden" id="tab-mail">
+          <div class="card-panel" id="mailComposerCard">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-paper-plane" style="color:var(--accent-cyan);"></i> Direct Mail Launcher</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Quickly send formal replies, project proposals, or custom inquiries directly via your preferred mail client.</p>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem; margin-bottom:1.5rem;">
+              <div class="form-group">
+                <label class="form-label" for="mailRecipient">Recipient Email</label>
+                <div class="input-wrap">
+                  <i class="fa-solid fa-at input-icon"></i>
+                  <input type="email" id="mailRecipient" class="form-input" placeholder="recruiter@company.com" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="mailSubject">Subject Line</label>
+                <div class="input-wrap">
+                  <i class="fa-solid fa-tag input-icon"></i>
+                  <input type="text" id="mailSubject" class="form-input" placeholder="Re: Frontend Developer Interview / Project Proposal" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:1.25rem;">
+              <label class="form-label" for="mailBody">Email Body</label>
+              <textarea id="mailBody" rows="6" class="form-input" placeholder="Write your message here..."></textarea>
+            </div>
+
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button type="button" class="btn-primary" onclick="adminApp.sendCustomEmail()">
+                <i class="fa-brands fa-google"></i> Launch & Send with Gmail Web
+              </button>
+              <a href="mailto:nirajpatel12052003@gmail.com" class="btn-secondary">
+                <i class="fa-solid fa-envelope"></i> Open Default Email Client
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Email Templates -->
+          <div class="card-panel">
+            <h3 class="panel-title"><i class="fa-solid fa-bookmark" style="color:var(--accent-amber);"></i> Professional Email Response Presets</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Click any template to auto-fill the composer with tested templates.</p>
+
+            <div class="mail-presets-grid">
+              <div class="mail-preset-card">
+                <div class="preset-title"><i class="fa-solid fa-calendar-check" style="color:var(--accent-emerald);"></i> Interview Availability</div>
+                <div class="preset-desc">Accept an interview invite with formal greeting, slot availability, and contact numbers.</div>
+                <button class="btn-secondary" onclick="adminApp.loadMailTemplate('interview')">Use Template</button>
+              </div>
+
+              <div class="mail-preset-card">
+                <div class="preset-title"><i class="fa-solid fa-briefcase" style="color:var(--accent-cyan);"></i> Freelance Project Proposal</div>
+                <div class="preset-desc">Professional outline covering project milestones, estimated turnaround, and tech stack.</div>
+                <button class="btn-secondary" onclick="adminApp.loadMailTemplate('freelance')">Use Template</button>
+              </div>
+
+              <div class="mail-preset-card">
+                <div class="preset-title"><i class="fa-solid fa-handshake" style="color:var(--accent-primary);"></i> Portfolio Inquiries Follow-Up</div>
+                <div class="preset-desc">Cordial thank you email to recruiters or clients reaching out via the portfolio.</div>
+                <button class="btn-secondary" onclick="adminApp.loadMailTemplate('inquiry')">Use Template</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 4: REACH & TRAFFIC ANALYTICS
+             ========================================== -->
+        <section class="tab-section hidden" id="tab-reach">
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-chart-simple" style="color:var(--accent-emerald);"></i> Portfolio Reach & Engagement Stats</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Breakdown of user interactions, project impressions, and resume downloads.</p>
+              </div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-card-top">
+                  <div class="stat-icon icon-reach"><i class="fa-solid fa-eye"></i></div>
+                </div>
+                <div class="stat-num" id="reachTotalVisits">0</div>
+                <div class="stat-label">Total Impressions</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card-top">
+                  <div class="stat-icon icon-visits"><i class="fa-solid fa-user-check"></i></div>
+                </div>
+                <div class="stat-num" id="reachUniqueVisitors">0</div>
+                <div class="stat-label">Unique Visitors</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card-top">
+                  <div class="stat-icon icon-messages"><i class="fa-solid fa-file-arrow-down"></i></div>
+                </div>
+                <div class="stat-num" id="reachResumeClicks">0</div>
+                <div class="stat-label">Resume Downloads / Clicks</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card-top">
+                  <div class="stat-icon icon-rating"><i class="fa-solid fa-diagram-project"></i></div>
+                </div>
+                <div class="stat-num" id="reachProjectClicks">0</div>
+                <div class="stat-label">Project Details Explored</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card-top">
+                  <div class="stat-icon icon-reach"><i class="fa-brands fa-github"></i></div>
+                </div>
+                <div class="stat-num" id="reachGithubClicks">0</div>
+                <div class="stat-label">GitHub Profile Launches</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-card-top">
+                  <div class="stat-icon icon-visits"><i class="fa-solid fa-paper-plane"></i></div>
+                </div>
+                <div class="stat-num" id="reachContactSubmissions">0</div>
+                <div class="stat-label">Form Submissions</div>
+              </div>
+            </div>
+
+            <!-- Referral Sources -->
+            <div style="margin-top:1.5rem;">
+              <h4 style="font-size:1rem; font-weight:700; margin-bottom:1rem;">Top Referral Channels</h4>
+              <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.25rem;">
+                    <span><i class="fa-brands fa-linkedin" style="color:#0a66c2;"></i> LinkedIn Referrals</span>
+                    <span>45% (639 visits)</span>
+                  </div>
+                  <div style="height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;">
+                    <div style="width:45%; height:100%; background:var(--accent-primary);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.25rem;">
+                    <span><i class="fa-brands fa-github"></i> GitHub Repositories</span>
+                    <span>30% (426 visits)</span>
+                  </div>
+                  <div style="height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;">
+                    <div style="width:30%; height:100%; background:var(--accent-cyan);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.25rem;">
+                    <span><i class="fa-solid fa-globe"></i> Direct & Resume QR Code</span>
+                    <span>25% (355 visits)</span>
+                  </div>
+                  <div style="height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;">
+                    <div style="width:25%; height:100%; background:var(--accent-emerald);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 5: LIVE PROFILE VISITS LOG
+             ========================================== -->
+        <section class="tab-section hidden" id="tab-visits">
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-clock-rotate-left" style="color:var(--accent-cyan);"></i> Live Profile Visits Log</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted);">Real-time visitor telemetry recorded when people visit your portfolio.</p>
+              </div>
+              <div class="panel-actions">
+                <button class="btn-secondary" onclick="adminApp.clearVisitsLog()"><i class="fa-solid fa-trash"></i> Clear Logs</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Visit #</th>
+                    <th>Timestamp</th>
+                    <th>Device</th>
+                    <th>Screen</th>
+                    <th>Browser</th>
+                    <th>Referrer Source</th>
+                  </tr>
+                </thead>
+                <tbody id="visitsTableBody">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 6: REVIEWS & RATINGS (ADMIN VIEW & ADD)
+             ========================================== -->
+        <section class="tab-section hidden" id="tab-reviews">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;" class="reviews-split-grid">
+            <!-- Left: Add New Review -->
+            <div class="card-panel">
+              <div class="panel-header">
+                <h3 class="panel-title"><i class="fa-solid fa-star" style="color:var(--accent-amber);"></i> Add Verified Review</h3>
+              </div>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.25rem;">
+                Add verified feedback, client testimonials, or recruiter ratings to the portfolio database.
+              </p>
+
+              <form id="addReviewForm" class="auth-form">
+                <div class="form-group">
+                  <label class="form-label" for="reviewAuthor">Reviewer / Client Name *</label>
+                  <input type="text" id="reviewAuthor" class="form-input" placeholder="e.g. Ramesh Kulkarni" required />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="reviewRole">Designation / Role</label>
+                  <input type="text" id="reviewRole" class="form-input" placeholder="e.g. Engineering Manager / Recruiter" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="reviewCompany">Company / Client Type</label>
+                  <input type="text" id="reviewCompany" class="form-input" placeholder="e.g. InnovateTech India / Freelance" />
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                  <div class="form-group">
+                    <label class="form-label" for="reviewRatingSelect">Rating Score *</label>
+                    <select id="reviewRatingSelect" class="form-input" style="cursor:pointer;" required>
+                      <option value="5">★★★★★ (5 Stars - Exceptional)</option>
+                      <option value="4">★★★★☆ (4 Stars - Very Good)</option>
+                      <option value="3">★★★☆☆ (3 Stars - Average)</option>
+                      <option value="2">★★☆☆☆ (2 Stars - Fair)</option>
+                      <option value="1">★☆☆☆☆ (1 Star - Poor)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="reviewCategory">Category</label>
+                    <select id="reviewCategory" class="form-input" style="cursor:pointer;">
+                      <option value="Frontend Development">Frontend Development</option>
+                      <option value="UI/UX & Design">UI/UX & Design</option>
+                      <option value="Project Delivery">Project Delivery</option>
+                      <option value="Communication & Speed">Communication & Speed</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="reviewComment">Review Feedback / Comment *</label>
+                  <textarea id="reviewComment" rows="4" class="form-input" placeholder="Enter review description..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" style="margin-top:0.5rem;">
+                  <i class="fa-solid fa-plus-circle"></i> Save & Publish Review
+                </button>
+              </form>
+            </div>
+
+            <!-- Right: Existing Reviews List -->
+            <div class="card-panel">
+              <div class="panel-header">
+                <h3 class="panel-title"><i class="fa-solid fa-list-check" style="color:var(--accent-cyan);"></i> Managed Reviews</h3>
+                <span class="badge badge-read" id="reviewsAdminCountBadge">Active Database</span>
+              </div>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+                These reviews are confidential and only visible to you in this admin dashboard and within the Admin-Unlocked Portfolio section.
+              </p>
+
+              <div id="reviewsAdminList">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             TAB 7: SECURITY & SETTINGS
+             ========================================== -->
+        <section class="tab-section hidden" id="tab-settings">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;" class="settings-split-grid">
+            <!-- Change Password -->
+            <div class="card-panel">
+              <h3 class="panel-title"><i class="fa-solid fa-lock" style="color:var(--accent-primary);"></i> Change Admin Password</h3>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.25rem;">Update your personalized login credentials.</p>
+
+              <form id="changePasswordForm" class="auth-form">
+                <div class="form-group">
+                  <label class="form-label" for="currentPassword">Current Password</label>
+                  <input type="password" id="currentPassword" class="form-input" placeholder="Current password" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="newPassword">New Password</label>
+                  <input type="password" id="newPassword" class="form-input" placeholder="New password" required minlength="5" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="confirmNewPassword">Confirm New Password</label>
+                  <input type="password" id="confirmNewPassword" class="form-input" placeholder="Repeat new password" required minlength="5" />
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top:0.5rem;">Update Password</button>
+              </form>
+            </div>
+
+            <!-- Recovery & Maintenance -->
+            <div class="card-panel">
+              <h3 class="panel-title"><i class="fa-solid fa-shield-halved" style="color:var(--accent-emerald);"></i> Recovery Email & Reset</h3>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.25rem;">Manage the address used for recovery notifications.</p>
+
+              <form id="recoveryEmailForm" class="auth-form" style="margin-bottom:2rem;">
+                <div class="form-group">
+                  <label class="form-label" for="settingsRecoveryEmail">Recovery Email</label>
+                  <input type="email" id="settingsRecoveryEmail" class="form-input" required />
+                </div>
+                <button type="submit" class="btn-secondary">Update Recovery Address</button>
+              </form>
+
+              <div style="padding-top:1rem; border-top:1px solid var(--border-subtle);">
+                <h4 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem; color:var(--accent-red);">Demo Data Reset</h4>
+                <p style="font-size:0.8rem; color:var(--text-dim); margin-bottom:0.75rem;">Restore sample initial messages, visits, and reviews.</p>
+                <button type="button" class="btn-secondary" style="border-color:rgba(239,68,68,0.3); color:#fca5a5;" onclick="adminApp.resetAllDemoData()">
+                  <i class="fa-solid fa-arrows-rotate"></i> Reset All Demo Data
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="admin-toast-container" id="adminToastContainer"></div>
+
+  <!-- Master Admin Controller -->
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
