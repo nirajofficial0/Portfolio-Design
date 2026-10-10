@@ -2,7 +2,7 @@
 
 A modern, professional, and fully responsive portfolio website showcasing frontend development skills, UI/UX design expertise, projects, and professional achievements. Built with HTML5, CSS3, and JavaScript with a sleek dark theme and interactive animations.
 
-**Portfolio Link:** neeraj-kumar-patel.dev
+**Portfolio Link:** https://neerajkumarpatel-portfolio.vercel.app/
 
 ---
 
