@@ -225,7 +225,7 @@ Portfolio Design/
 1. **Clone or Download Project**
    ```bash
    # If using Git
-   git clone https://github.com/yourusername/portfolio-design.git
+   git clone https://github.com/nirajofficial0/Portfolio-Design.git
    cd portfolio-design
    ```
 
@@ -236,13 +236,13 @@ Portfolio Design/
 3. **PHP Mail Configuration** (for contact form)
    - Update the email recipient in `contact.php`:
      ```php
-     $to = 'your-email@example.com';
+     $to = 'neerajkmpatel@gmail.com';
      ```
    - Ensure your server has mail functionality enabled
 
 4. **Open in Browser**
    ```
-   http://localhost/portfolio-design/
+   https://neerajkumarpatel-portfolio.vercel.app/
    ```
 
 ### Production Deployment
